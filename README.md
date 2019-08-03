@@ -1,14 +1,6 @@
 # Squad-9 Aceleração React - Team
 
-Tiago Almeida
-
-Janio Miara
-
-Bill
-
-Jairo
-
-Vagner Landio
+Tiago Almeida, Janio Miara, Bill, Jairo e Vagner Landio
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
