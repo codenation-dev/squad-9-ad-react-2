@@ -1,6 +1,6 @@
 # Squad-9 Aceleração React - Team
 
-Tiago Almeida, Janio Miara, Bill, Jairo e Vagner Landio
+Tiago Almeida, Janio Miara, Bill, Jairo and Vagnerlandio Nunes
 
 # 
 
