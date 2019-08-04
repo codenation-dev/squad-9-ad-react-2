@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Nav = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ const Nav = styled.div`
 `;
 
 const NavPesquisa = styled.div`
-  margin-top: 10px;
+  margin-top: 400px;
 `;
 
 const Input = styled.input`

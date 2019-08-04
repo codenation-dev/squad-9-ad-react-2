@@ -10,15 +10,17 @@ import Home from './containers/Home/Home';
 function App() {
   return (
     <Provider store={store}>
-      <NavBar />
-        <div style={{
-          display: "flex",
-          height: "90vh",
-        }}>
-          <Sidebar />
-          <Route exact path='/' component={Home} />
-          <Route path='/:nameUser' exact component={User} />
-        </div>
+      {/*<NavBar />*/}
+      <div
+        style={{
+          display: 'flex',
+          height: '90vh'
+        }}
+      >
+        <Sidebar />
+        <Route exact path='/' component={Home} />
+        <Route path='/:nameUser' exact component={User} />
+      </div>
     </Provider>
   );
 }

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Nav, NavPesquisa, Input } from "./styles";
-import { withRouter } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import React, { Component } from 'react';
+import { Nav, NavPesquisa, Input } from './styles';
+import { withRouter } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 class NavBar extends Component {
   constructor(props) {
@@ -17,10 +17,8 @@ class NavBar extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { push } = this.props.history;
-    push(this.state.user);
+    this.props.history.push(this.state.user);
     this.setState({ user: '' });
-
   };
 
   render() {
@@ -29,17 +27,17 @@ class NavBar extends Component {
         <form onSubmit={e => this.handleSubmit(e)}>
           <NavPesquisa>
             <Input
-              id="standard-multiline-flexible"
-              label="Users"
-              name={"user"}
+              id='standard-multiline-flexible'
+              label='Users'
+              name={'user'}
               value={this.state.user}
               onChange={this.handleValue}
             />
 
             <Button
               onClick={e => this.handleSubmit(e)}
-              variant="contained"
-              color="default"
+              variant='contained'
+              color='default'
             >
               Pesquisar
             </Button>
