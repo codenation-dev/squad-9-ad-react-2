@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const CardPrincipal = styled.div`
-  margin-left: 45%;
+  text-align: center;
   margin-top: 10%;
   font-size: 20px;
   color: #097b65;
@@ -13,8 +13,14 @@ const CardUserInfo = styled.div`
 `;
 
 const Logo = styled.img`
-  margin-left: -90px;
   width: 400px;
 `;
 
-export { CardPrincipal, CardUserInfo, Logo };
+const userAvatar = styled.img`
+  max-width: 250px;
+  max-height: 250px;
+  border: 3px solid black;
+  border-radius: 50%;
+`;
+
+export { CardPrincipal, CardUserInfo, Logo, userAvatar };
