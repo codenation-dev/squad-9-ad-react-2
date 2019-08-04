@@ -7,7 +7,7 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: ""
+      user: ''
     };
   }
 
@@ -17,8 +17,10 @@ class NavBar extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.history.push(this.state.user);
-    this.setState({ user: "" });
+    const { push } = this.props.history;
+    push(this.state.user);
+    this.setState({ user: '' });
+
   };
 
   render() {
