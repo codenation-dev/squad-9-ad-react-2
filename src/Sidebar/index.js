@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Dashboard } from "./styles";
-import IconButton from "@material-ui/core/IconButton";
-import Icon from "@material-ui/core/Icon";
+import React, { Component } from 'react';
+import { SidebarStyle } from './styles';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 
-export class Timeline extends Component {
+class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,15 +11,15 @@ export class Timeline extends Component {
     };
   }
 
-  handleDashboard = () => {
+  handleSidebar = () => {
     this.setState({ status: !this.state.status });
   };
 
   render() {
     return (
-      <Dashboard width={this.state.status}>
+      <SidebarStyle width={this.state.status}>
         <div>
-          <IconButton onClick={() => this.handleDashboard()} color={"white"}>
+          <IconButton onClick={this.handleSidebar} color={'white'}>
             <Icon>settings</Icon>
           </IconButton>
         </div>
@@ -38,7 +38,9 @@ export class Timeline extends Component {
             <Icon>group</Icon>
           </IconButton>
         </div>
-      </Dashboard>
+      </SidebarStyle>
     );
   }
 }
+
+export default Sidebar;
