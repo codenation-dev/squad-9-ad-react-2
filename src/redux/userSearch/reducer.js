@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  data: ['janiomiara'],
+  data: ["janiomiara"],
   isFetching: false,
   error: false
 };
