@@ -2,7 +2,7 @@ import axios from "axios";
 import { LOAD_DATA_REQUEST } from "./types";
 
 import { put, takeLatest, all } from "redux-saga/effects";
-import {loadDataFailure, loadDataSuccess} from "../../actions";
+import { loadDataFailure, loadDataSuccess } from "../../actions";
 
 function* getUser({ username }) {
   try {
