@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Nav = styled.div`
   display: flex;
   width: 100%;
-  height: 55px;
+  height: 10vh;
   background: #097b65;
   justify-content: center;
 
