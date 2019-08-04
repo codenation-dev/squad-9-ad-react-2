@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Dashboard = styled.div`
+export const SidebarStyle = styled.div`
   position: fixed;
-  width: ${props => (props.width ? "230px" : "55px")};
+  width: ${props => (props.width ? '230px' : '55px')};
   transition: width 1s;
   height: 100%;
   background: #0a2342;
