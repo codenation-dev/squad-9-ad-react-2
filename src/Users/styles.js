@@ -43,4 +43,9 @@ const UserAvatar = styled.img`
   margin-right: 1em;
 `;
 
-export { CardPrincipal, CardUserInfo, Logo, UserAvatar, CardUserInfoHeader, CardUserInfoContent };
+const StatusMessage = styled.h1`
+  text-align: center;
+  margin-top: 10%;
+`;
+
+export { CardPrincipal, CardUserInfo, Logo, UserAvatar, StatusMessage, CardUserInfoHeader, CardUserInfoContent };
