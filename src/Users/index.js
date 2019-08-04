@@ -1,10 +1,9 @@
-
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { loadDataRequest } from "../actions";
-import logoGithub from "../images/git-img.png";
-import { connect } from "react-redux";
-import { CardPrincipal, CardUserInfo, Logo } from "./styles";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { loadDataRequest } from '../actions';
+import logoGithub from '../images/git-img.png';
+import { connect } from 'react-redux';
+import { CardPrincipal, CardUserInfo, Logo, UserAvatar } from './styles';
 
 class User extends Component {
   componentDidMount() {
@@ -15,11 +14,21 @@ class User extends Component {
   render() {
     return (
       <CardPrincipal>
-        {this.props.user.map(item => {
+        {this.props.user.map(user => {
           return (
             <>
-              <Logo className="logo" src={logoGithub} alt="Logo" />
-              <CardUserInfo>User: {item.login}</CardUserInfo>
+              {/*<Logo className="logo" src={logoGithub} alt="Logo" />*/}
+              <UserAvatar src={user.avatar_url} />
+              <CardUserInfo>
+                User:{' '}
+                <a
+                  href={user.html_url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  {user.login}
+                </a>
+              </CardUserInfo>
             </>
           );
         })}

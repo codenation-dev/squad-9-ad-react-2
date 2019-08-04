@@ -16,11 +16,11 @@ const Logo = styled.img`
   width: 400px;
 `;
 
-const userAvatar = styled.img`
+const UserAvatar = styled.img`
   max-width: 250px;
   max-height: 250px;
-  border: 3px solid black;
+  border: 3px solid #00000045;
   border-radius: 50%;
 `;
 
-export { CardPrincipal, CardUserInfo, Logo, userAvatar };
+export { CardPrincipal, CardUserInfo, Logo, UserAvatar };
