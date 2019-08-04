@@ -1,25 +1,25 @@
 const INITIAL_STATE = {
-  data: ["janiomiara"],
+  data: [],
   isFetching: false,
   error: false
 };
 
 const userSearch = (state = INITIAL_STATE, action) => {
-  if (action.type === "LOAD_DATA_REQUEST") {
+  if (action.type === 'LOAD_DATA_REQUEST') {
     return {
       isFetching: true,
       data: [],
       error: false
     };
   }
-  if (action.type === "LOAD_DATA_SUCCESS") {
+  if (action.type === 'LOAD_DATA_SUCCESS') {
     return {
       isFetching: false,
       data: action.data,
       error: false
     };
   }
-  if (action.type === "LOAD_DATA_FAILURE") {
+  if (action.type === 'LOAD_DATA_FAILURE') {
     return {
       isFetching: false,
       data: [],

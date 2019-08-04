@@ -8,6 +8,7 @@ import {
   UserAvatar,
   StatusMessage
 } from './styles';
+import UserRepos from './Repos';
 
 class User extends Component {
   componentDidMount() {
@@ -16,10 +17,15 @@ class User extends Component {
   }
 
   render() {
-    const { user, error, isFetching } = this.props;
+    const { user, error, isFetching, status } = this.props;
 
     if (isFetching) return <StatusMessage>Loading data...</StatusMessage>;
-    if (error) return <StatusMessage>Usuário não encontrado</StatusMessage>;
+    if (error)
+      return (
+        <StatusMessage>
+          <span style={{ color: 'red' }}>{status}</span> Usuário não encontrado
+        </StatusMessage>
+      );
 
     return (
       <CardPrincipal>
@@ -38,6 +44,7 @@ class User extends Component {
                   {user.login}
                 </a>
               </CardUserInfo>
+              {user.login && <UserRepos repos_url={user.repos_url} />}
             </>
           );
         })}
@@ -47,11 +54,12 @@ class User extends Component {
 }
 
 function mapStateToProps(state) {
-  const { data, error, isFetching } = state.userSearch;
+  const { data, error, isFetching, status } = state.userSearch;
   return {
     user: data,
     error,
-    isFetching
+    isFetching,
+    status
   };
 }
 
