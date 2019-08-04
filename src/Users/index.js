@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { loadDataRequest } from "../actions";
+import logoGithub from "../images/git-img.png";
 import { connect } from "react-redux";
+import { CardPrincipal, CardUserInfo, Logo } from "./styles";
 
 class User extends Component {
   componentDidMount() {
@@ -11,11 +13,16 @@ class User extends Component {
 
   render() {
     return (
-      <div style={{ marginLeft: "50%", marginTop: "10%" }}>
+      <CardPrincipal>
         {this.props.user.map(item => {
-          return <div>User: {item.login}</div>;
+          return (
+            <>
+              <Logo className="logo" src={logoGithub} alt="Logo" />
+              <CardUserInfo>User: {item.login}</CardUserInfo>
+            </>
+          );
         })}
-      </div>
+      </CardPrincipal>
     );
   }
 }

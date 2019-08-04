@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Nav } from "./styles";
+import { Nav, NavPesquisa, Input } from "./styles";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
@@ -25,21 +25,23 @@ class NavBar extends Component {
     return (
       <Nav>
         <form onSubmit={e => this.handleSubmit(e)}>
-          <input
-            id="standard-multiline-flexible"
-            label="Users"
-            name={"user"}
-            value={this.state.user}
-            onChange={this.handleValue}
-          />
+          <NavPesquisa>
+            <Input
+              id="standard-multiline-flexible"
+              label="Users"
+              name={"user"}
+              value={this.state.user}
+              onChange={this.handleValue}
+            />
 
-          <Button
-            onClick={e => this.handleSubmit(e)}
-            variant="contained"
-            color="primary"
-          >
-            Primary
-          </Button>
+            <Button
+              onClick={e => this.handleSubmit(e)}
+              variant="contained"
+              color="default"
+            >
+              Pesquisar
+            </Button>
+          </NavPesquisa>
         </form>
       </Nav>
     );
