@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const CardPrincipal = styled.div`
   text-align: center;
-  margin-top: 10%;
+  margin: 5%;
   font-size: 20px;
   color: #097b65;
 `;
