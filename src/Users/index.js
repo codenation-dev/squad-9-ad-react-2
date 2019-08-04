@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { loadDataRequest } from '../actions';
-import logoGithub from '../images/git-img.png';
 import { connect } from 'react-redux';
-import { CardPrincipal, CardUserInfo, Logo, UserAvatar } from './styles';
+import { CardPrincipal, CardUserInfo, UserAvatar } from './styles';
 
 class User extends Component {
   componentDidMount() {
