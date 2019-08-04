@@ -25,7 +25,7 @@ class UserRepos extends Component {
   };
 
   render() {
-    const { repos } = this.props;
+    // const { repos } = this.props;
     return (
       <div>
         {this.getYears().map(year => (
