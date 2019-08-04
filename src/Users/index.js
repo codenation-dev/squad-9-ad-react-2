@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { loadDataRequest } from "../actions";
@@ -11,9 +12,26 @@ class User extends Component {
 
   render() {
     return (
-      <div style={{ marginLeft: "50%", marginTop: "10%" }}>
+      <div style={{ textAlign: 'center', marginTop: '10%' }}>
         {this.props.user.map(item => {
-          return <div>User: {item.login}</div>;
+          return (
+            <div>
+              <img
+                src={item.avatar_url}
+                style={{
+                  maxWidth: '200px',
+                  maxHeight: '200px',
+                  border: '1px solid black',
+                  borderRadius: '50%'
+                }}
+                alt={`avatar-${item.login}`}
+              />
+              <a href={item.html_url} target='_blank' rel='noopener noreferrer'>
+                {' '}
+                <h2>User: {item.login}</h2>
+              </a>
+            </div>
+          );
         })}
       </div>
     );
