@@ -2,7 +2,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { loadDataRequest } from "../actions";
+import logoGithub from "../images/git-img.png";
 import { connect } from "react-redux";
+import { CardPrincipal, CardUserInfo, Logo } from "./styles";
 
 class User extends Component {
   componentDidMount() {
@@ -12,28 +14,16 @@ class User extends Component {
 
   render() {
     return (
-      <div style={{ textAlign: 'center', marginTop: '10%' }}>
+      <CardPrincipal>
         {this.props.user.map(item => {
           return (
-            <div>
-              <img
-                src={item.avatar_url}
-                style={{
-                  maxWidth: '200px',
-                  maxHeight: '200px',
-                  border: '1px solid black',
-                  borderRadius: '50%'
-                }}
-                alt={`avatar-${item.login}`}
-              />
-              <a href={item.html_url} target='_blank' rel='noopener noreferrer'>
-                {' '}
-                <h2>User: {item.login}</h2>
-              </a>
-            </div>
+            <>
+              <Logo className="logo" src={logoGithub} alt="Logo" />
+              <CardUserInfo>User: {item.login}</CardUserInfo>
+            </>
           );
         })}
-      </div>
+      </CardPrincipal>
     );
   }
 }

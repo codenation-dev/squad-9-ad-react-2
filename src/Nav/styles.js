@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const Nav = styled.div`
+const Nav = styled.div`
   display: flex;
   width: 100%;
   height: 55px;
-  background: #363636;
+  background: #097b65;
   justify-content: center;
 
   @keyframes slide-top1 {
@@ -22,3 +22,13 @@ export const Nav = styled.div`
     background: white;
   }
 `;
+
+const NavPesquisa = styled.div`
+  margin-top: 10px;
+`;
+
+const Input = styled.input`
+  height: 34px;
+`;
+
+export { Nav, NavPesquisa, Input };

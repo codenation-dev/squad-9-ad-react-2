@@ -5,10 +5,10 @@ export const Dashboard = styled.div`
   width: ${props => (props.width ? "230px" : "55px")};
   transition: width 1s;
   height: 100%;
-  background: #363636;
+  background: #0a2342;
 
   span {
-    color: #778899;
+    color: #fff;
 
     :hover {
       transform: scale(1.1);
