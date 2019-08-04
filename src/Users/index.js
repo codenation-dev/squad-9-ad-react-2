@@ -6,7 +6,9 @@ import {
   CardPrincipal,
   CardUserInfo,
   UserAvatar,
-  StatusMessage
+  StatusMessage,
+  CardUserInfoHeader,
+  CardUserInfoContent
 } from './styles';
 import UserRepos from './Repos';
 
@@ -31,21 +33,32 @@ class User extends Component {
       <CardPrincipal>
         {user.map(user => {
           return (
-            <>
+            <div style={{display: "flex"}}>
               {/*<Logo className="logo" src={logoGithub} alt="Logo" />*/}
               <UserAvatar src={user.avatar_url} />
               <CardUserInfo>
-                User:{' '}
-                <a
-                  href={user.html_url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {user.login}
-                </a>
+                <CardUserInfoHeader>
+                  <h3>
+                    <a
+                      href={user.html_url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      {user.name}
+                    </a>
+                  </h3>
+                  <span style={{fontSize: "0.75em"}}>{user.login}</span>
+                </CardUserInfoHeader>
+                <CardUserInfoContent>
+                  <div>Repositórios públicos: {user.public_repos}</div>
+                  <div>Seguidores: {user.followers}</div>
+                  <div>Seguindo: {user.following}</div>
+                </CardUserInfoContent>
               </CardUserInfo>
+
               {user.login && <UserRepos repos_url={user.repos_url} />}
             </>
+
           );
         })}
       </CardPrincipal>

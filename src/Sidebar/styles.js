@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const SidebarStyle = styled.div`
-  position: fixed;
+  /* position: fixed; */
   width: ${props => (props.width ? "230px" : "55px")};
   transition: width 1s;
   height: 100%;
