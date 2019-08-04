@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { loadDataRequest } from '../actions';
 import { connect } from 'react-redux';
-import { CardPrincipal, CardUserInfo, UserAvatar } from './styles';
+import {
+  CardPrincipal,
+  CardUserInfo,
+  UserAvatar,
+  StatusMessage
+} from './styles';
 
 class User extends Component {
   componentDidMount() {
@@ -11,9 +16,14 @@ class User extends Component {
   }
 
   render() {
+    const { user, error, isFetching } = this.props;
+
+    if (isFetching) return <StatusMessage>Loading data...</StatusMessage>;
+    if (error) return <StatusMessage>Usuário não encontrado</StatusMessage>;
+
     return (
       <CardPrincipal>
-        {this.props.user.map(user => {
+        {user.map(user => {
           return (
             <>
               {/*<Logo className="logo" src={logoGithub} alt="Logo" />*/}
@@ -37,9 +47,11 @@ class User extends Component {
 }
 
 function mapStateToProps(state) {
+  const { data, error, isFetching } = state.userSearch;
   return {
-    user: state.userSearch.data,
-    status: state.userSearch.status
+    user: data,
+    error,
+    isFetching
   };
 }
 

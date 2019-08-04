@@ -23,4 +23,9 @@ const UserAvatar = styled.img`
   border-radius: 50%;
 `;
 
-export { CardPrincipal, CardUserInfo, Logo, UserAvatar };
+const StatusMessage = styled.h1`
+  text-align: center;
+  margin-top: 10%;
+`;
+
+export { CardPrincipal, CardUserInfo, Logo, UserAvatar, StatusMessage };
