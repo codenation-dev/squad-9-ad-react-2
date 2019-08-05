@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { SidebarStyle, LegendaSidebar } from './styles';
-import IconButton from '@material-ui/core/IconButton';
-import Icon from '@material-ui/core/Icon';
+import React, { Component } from "react";
+import { SidebarStyle, LegendaSidebar } from "./styles";
+import Icon from "@material-ui/core/Icon";
 
 class Sidebar extends Component {
   constructor(props) {
@@ -20,27 +19,27 @@ class Sidebar extends Component {
       <SidebarStyle width={this.state.status}>
         <div
           style={{
-            marginTop: '100px',
-            position: 'absolute',
-            textAlign: 'center'
+            marginTop: "100px",
+            position: "absolute",
+            textAlign: "center"
           }}
         >
           <div>
             <Icon onClick={this.handleSidebar}>settings</Icon>
-            <LegendaSidebar>{this.state.status ? 'Menu' : ''}</LegendaSidebar>
+            <LegendaSidebar>{this.state.status ? "Menu" : ""}</LegendaSidebar>
           </div>
           <div>
             <Icon>home</Icon>
-            <LegendaSidebar>{this.state.status ? 'Inicio' : ''}</LegendaSidebar>
+            <LegendaSidebar>{this.state.status ? "Inicio" : ""}</LegendaSidebar>
           </div>
           <div>
             <Icon>backspace</Icon>
-            <LegendaSidebar>{this.state.status ? 'Limpar' : ''}</LegendaSidebar>
+            <LegendaSidebar>{this.state.status ? "Limpar" : ""}</LegendaSidebar>
           </div>
-          <div>
+          <div style={{ display: "none" }}>
             <Icon>group</Icon>
             <LegendaSidebar>
-              {this.state.status ? 'Pesquisados' : ''}
+              {this.state.status ? "Pesquisados" : ""}
             </LegendaSidebar>
           </div>
         </div>

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { loadDataRequest } from '../actions';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { loadDataRequest } from "../actions";
+import { connect } from "react-redux";
 import {
   CardPrincipal,
   CardUserInfo,
@@ -9,19 +9,19 @@ import {
   StatusMessage,
   CardUserInfoHeader,
   CardUserInfoContent
-} from './styles';
-import UserRepos from './Repos';
-import Navbar2 from '../Nav/index2';
+} from "./styles";
+import UserRepos from "./Repos";
+import Navbar2 from "../Nav/index2";
 
 class User extends Component {
   componentDidMount() {
     const user = this.props.match.params.nameUser;
     this.props.loadDataRequest(user);
   }
-  
-  handleRequest = (user) => {
+
+  handleRequest = user => {
     this.props.loadDataRequest(user);
-  }
+  };
 
   render() {
     const { user, error, isFetching, status } = this.props;
@@ -30,7 +30,7 @@ class User extends Component {
     if (error)
       return (
         <StatusMessage>
-          <span style={{ color: 'red' }}>{status}</span> Usuário não encontrado
+          <span style={{ color: "red" }}>{status}</span> Usuário não encontrado
         </StatusMessage>
       );
 
@@ -40,7 +40,7 @@ class User extends Component {
         <CardPrincipal>
           {user.map(user => {
             return (
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: "flex" }}>
                 {/*<Logo className="logo" src={logoGithub} alt="Logo" />*/}
                 <UserAvatar src={user.avatar_url} />
                 <CardUserInfo>
@@ -48,13 +48,13 @@ class User extends Component {
                     <h3>
                       <a
                         href={user.html_url}
-                        target='_blank'
-                        rel='noopener noreferrer'
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {user.name}
                       </a>
                     </h3>
-                    <span style={{ fontSize: '0.75em' }}>{user.login}</span>
+                    <span style={{ fontSize: "0.75em" }}>{user.login}</span>
                   </CardUserInfoHeader>
                   <CardUserInfoContent>
                     <div>Repositórios públicos: {user.public_repos}</div>
