@@ -24,14 +24,37 @@ class UserRepos extends Component {
     return [...new Set(anos)];
   };
 
-  render() {
+  handleRepo = (year) => {
     const { repos } = this.props;
+    const newRop = repos.filter((repo) => {
+      return Number(repo.created_at.substr(0, 4)) === year
+    });
+
+    this.setState({repos: newRop});
+    return newRop
+  };
+
+  render() {
     return (
-      <div>
-        {this.getYears().map(year => (
-          <button>{year}</button>
-        ))}
-      </div>
+      <>
+        <div>
+          {this.getYears().map(year => (
+            <button onClick={() => this.handleRepo(year)}>{year}</button>
+          ))}
+        </div>
+          <div>
+            {this.state.repos.map((repo) => {
+              return(
+              <>
+                <a href={repo.html_url} target="_blank">
+                  <div>{repo.name}</div>
+                </a>
+                
+              </>
+              )
+            })}
+          </div>
+      </>
     );
   }
 }

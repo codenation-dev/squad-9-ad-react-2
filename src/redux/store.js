@@ -5,10 +5,10 @@ import createSagaMiddleware from 'redux-saga';
 import getUserRepos from './userRepos/reducer';
 // Import reducers
 // import User from './user/reducer';
-// import repo from './repo/reducer';
+import repo from './repo/reducer';
 import userSearch from './userSearch/reducer';
 
-const rootReducers = combineReducers({ userSearch, getUserRepos });
+const rootReducers = combineReducers({ userSearch, getUserRepos, repo });
 
 const sagaMiddleware = createSagaMiddleware();
 

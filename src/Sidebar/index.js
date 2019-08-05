@@ -19,30 +19,28 @@ class Sidebar extends Component {
     return (
       <SidebarStyle width={this.state.status}>
         <div>
-          <IconButton onClick={this.handleSidebar} color={"white"}>
-            <Icon>settings</Icon>
-            <LegendaSidebar>{this.state.status ? "Menu" : ""}</LegendaSidebar>
-          </IconButton>
+          <Icon style={{marginTop: '100px'}} onClick={this.handleSidebar}>settings</Icon>
+          <LegendaSidebar>{this.state.status ? "Menu" : ""}</LegendaSidebar>
         </div>
         <div>
-          <IconButton>
+         
             <Icon>home</Icon>
             <LegendaSidebar>{this.state.status ? "Inicio" : ""}</LegendaSidebar>
-          </IconButton>
+    
         </div>
         <div>
-          <IconButton>
+     
             <Icon>backspace</Icon>
             <LegendaSidebar>{this.state.status ? "Limpar" : ""}</LegendaSidebar>
-          </IconButton>
+     
         </div>
         <div>
-          <IconButton>
+          
             <Icon>group</Icon>
             <LegendaSidebar>
               {this.state.status ? "Pesquisados" : ""}
             </LegendaSidebar>
-          </IconButton>
+         
         </div>
       </SidebarStyle>
     );

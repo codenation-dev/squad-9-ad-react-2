@@ -8,8 +8,6 @@ function* getUserRepos({ payload }) {
   try {
     console.log(payload, 'payload');
     const dados = yield axios.get(payload);
-
-    console.log(dados.data);
     yield put(loadUserReposSuccess(dados.data));
   } catch (error) {
     yield put(loadUserReposFailure(error.response));

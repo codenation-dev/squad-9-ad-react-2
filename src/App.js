@@ -6,19 +6,33 @@ import User from './Users';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Home from './containers/Home/Home';
+import Repositorio from "./Repositorio";
+import {Col, Container, Row} from "react-bootstrap";
 
 function App() {
   return (
     <Provider store={store}>
-      <NavBar />
-        <div style={{
-          display: "flex",
-          height: "90vh",
-        }}>
-          <Sidebar />
-          <Route exact path='/' component={Home} />
-          <Route path='/:nameUser' exact component={User} />
-        </div>
+      <Container fluid={true}>
+        {/*<Row>*/}
+          {/*<Col md={12} style={{background: 'red'}}>Nav</Col>*/}
+        {/*</Row>*/}
+        <Row>
+          <div style={{ height: '100%', position: 'absolute'}}><Sidebar/></div>
+          <NavBar />
+        </Row>
+      </Container>
+      {/*/!*<NavBar />*!/*/}
+      {/*<div*/}
+        {/*style={{*/}
+          {/*display: 'flex',*/}
+          {/*height: '90vh'*/}
+        {/*}}*/}
+      {/*>*/}
+      
+      
+        {/*<Route exact path='/' component={Home} />*/}
+        {/*<Route path='/:nameUser' exact component={User} />*/}
+      {/*</div>*/}
     </Provider>
   );
 }
