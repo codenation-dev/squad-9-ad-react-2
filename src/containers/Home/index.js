@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <Container>
       <Navbar />
-      <GithubLogo src={logoGithub} alt='github-logo' />
+      {/* <GithubLogo src={logoGithub} alt='github-logo' /> */}
     </Container>
   );
 };

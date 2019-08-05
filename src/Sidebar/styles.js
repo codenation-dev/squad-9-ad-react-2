@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const SidebarStyle = styled.div`
-  width: ${props => (props.width ? "150px" : "55px")};
+  width: ${props => (props.width ? '150px' : '55px')};
   transition: width 1s;
   height: 100%;
   background: #303f52;
-  
-  div{
-      margin-left: 8px;
-      padding: 5px;
+
+  div {
+    text-align: center;
+    padding: 5px;
   }
 
   span {
