@@ -11,11 +11,15 @@ import {
   CardUserInfoContent
 } from './styles';
 import UserRepos from './Repos';
-import Navbar from '../Nav';
+import Navbar2 from '../Nav/index2';
 
 class User extends Component {
   componentDidMount() {
     const user = this.props.match.params.nameUser;
+    this.props.loadDataRequest(user);
+  }
+  
+  handleRequest = (user) => {
     this.props.loadDataRequest(user);
   }
 
@@ -32,7 +36,7 @@ class User extends Component {
 
     return (
       <>
-        <Navbar />
+        <Navbar2 handleRequest={this.handleRequest} />
         <CardPrincipal>
           {user.map(user => {
             return (

@@ -1,14 +1,18 @@
 import styled from "styled-components";
 
 const SidebarStyle = styled.div`
-  /* position: fixed; */
-  width: ${props => (props.width ? "230px" : "55px")};
+  width: ${props => (props.width ? "150px" : "55px")};
   transition: width 1s;
   height: 100%;
-  background: #0a2342;
+  background: #303f52;
+  
+  div{
+      margin-left: 8px;
+      padding: 5px;
+  }
 
   span {
-    color: #fff;
+    color: #a7c1c7;
 
     :hover {
       transform: scale(1.1);
@@ -29,8 +33,11 @@ const SidebarStyle = styled.div`
   animation: slide-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
 
-const LegendaSidebar = styled.div`
-  margin-left: 25px;
+const LegendaSidebar = styled.span`
+  margin-bottom: 20px;
+  font-size: 10px;
+  transition: margin-left 2s;
+  margin-left: 10px;
 `;
 
 export { SidebarStyle, LegendaSidebar };

@@ -23,12 +23,21 @@ const Nav = styled.div`
   }
 `;
 
+
+
+
+const NavPesquisa2 = styled.div`
+  margin-top: 0px;
+`;
+
+
 const NavPesquisa = styled.div`
-  margin-top: 400px;
+  margin-top: 200px;
+  margin-left: 500px;
 `;
 
 const Input = styled.input`
   height: 34px;
 `;
 
-export { Nav, NavPesquisa, Input };
+export { Nav, NavPesquisa, NavPesquisa2, Input };
