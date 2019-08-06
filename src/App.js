@@ -16,7 +16,10 @@ function App() {
       <Container fluid={true}>
         <Bars>
           <Route exact path='/' component={Home} />
-          <Route path='/:nameUser' exact component={User} />
+          <div className='m-5'>
+            <Route path='/:nameUser' exact component={User} />
+          </div>
+
           <Route path='/repositories/:repoQuery' exact component={Paginacao} />
         </Bars>
         {/*<Row>*/}
