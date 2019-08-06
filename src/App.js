@@ -8,20 +8,28 @@ import store from './redux/store';
 import Home from './containers/Home';
 import Repositorio from './Repositorio';
 import { Col, Container, Row } from 'react-bootstrap';
+import Bars from './Bars'
 
 function App() {
+
   return (
     <Provider store={store}>
-      <Container fluid={true}>
+      <Bars>
+        <Route exact path='/' component={Home} />
+        <Route path='/:nameUser' exact component={User} />
+        <Route path='/repositories/:repoQuery' exact component={Repositorio} />
+      </Bars>
+
+      {/* <Container fluid={true}> */}
         {/*<Row>*/}
         {/*<Col md={12} style={{background: 'red'}}>Nav</Col>*/}
         {/*</Row>*/}
-        <Row>
+        {/* <Row>
           <div style={{ height: '100%', position: 'absolute' }}>
             <Sidebar />
           </div>
-        </Row>
-      </Container>
+        </Row> */}
+      {/* </Container> */}
       {/*/!*<NavBar />*!/*/}
       {/*<div*/}
       {/*style={{*/}
@@ -30,9 +38,7 @@ function App() {
       {/*}}*/}
       {/*>*/}
 
-      <Route exact path='/' component={Home} />
-      <Route path='/:nameUser' exact component={User} />
-      <Route path='/repositories/:repoQuery' exact component={Repositorio} />
+      
       {/*</div>*/}
     </Provider>
   );
