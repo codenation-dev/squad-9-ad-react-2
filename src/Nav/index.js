@@ -8,6 +8,30 @@ import Icon from "@material-ui/core/Icon";
 import logo from "../images/git-img.png";
 import { Provider } from "react-redux";
 import Switch from "@material-ui/core/Switch";
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
+import FormGroup from '@material-ui/core/FormGroup';
+import IconButton from '@material-ui/core/IconButton';
+import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  dense: {
+    marginTop: theme.spacing(2),
+  },
+  menu: {
+    width: 200,
+  },
+}));
 
 class NavBar extends Component {
   constructor(props) {
@@ -42,6 +66,7 @@ class NavBar extends Component {
 
   render() {
     const { searchRepos, query } = this.state;
+    
     return (
       <div
         style={{
@@ -63,21 +88,48 @@ class NavBar extends Component {
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
         <form onSubmit={e => this.handleSubmit(e)}>
-          <InputGroup className="mb-3">
-            <FormControl
+            {/* <FormControl
               placeholder={`Search GitHub ${
                 searchRepos ? "Repositories" : "Users"
               }`}
               name={"query"}
               value={query}
-              onChange={this.handleValue}
-            />
-            <InputGroup.Append>
+              // onChange={this.handleValue}
+            /> */}
+            {/* <InputGroup.Append>
               <InputGroup.Text id="basic-addon2">
                 <Icon type="submit">search</Icon>
               </InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
+            </InputGroup.Append> */}
+            <Grid item xs={12}>
+              <FormGroup row={true}>
+                <TextField
+                  id="outlined-name"
+                  label={`Search GitHub ${
+                    searchRepos ? "Repositories" : "Users"
+                  }`}
+                  value={query}
+                  onChange={({ target: { value, name } }) => {
+                    this.setState({
+                      [name]: value,
+                      query: value,
+                    });
+                  }}
+                  margin="normal"
+                  style={{flex: "1"}}
+                  variant="outlined"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <IconButton type="submit">
+                          <SearchIcon />
+                        </IconButton>
+                      </InputAdornment>
+                     )
+                    }}
+                />
+              </FormGroup>
+            </Grid>
         </form>
       </div>
     );
