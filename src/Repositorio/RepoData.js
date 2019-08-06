@@ -39,7 +39,13 @@ class RepoData extends Component {
     return (
       <div style={{ textAlign: 'center' }}>
         {this.props.repo ? (
-          <div className='row' style={{ justifyContent: 'center' }}>
+          <div
+            className='row'
+            style={{
+              justifyContent: 'center',
+              animation: 'fadeIn ease-in-out 1.5s'
+            }}
+          >
             {this.props.repo.items.map((repo, index) => {
               const {
                 owner: { login, avatar_url },

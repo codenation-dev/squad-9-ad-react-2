@@ -130,7 +130,8 @@ class Pagination extends Component {
               width: '100%',
               textAlign: 'center',
               marginLeft: '55px',
-              marginBottom: '40px'
+              marginBottom: '40px',
+              animation: 'fadeIn ease-in-out 1.5s'
             }}
           >
             <nav aria-label='Countries Pagination'>

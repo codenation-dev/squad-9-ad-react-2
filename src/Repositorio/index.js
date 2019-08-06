@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Pagination from '../Paginacao';
+import Pagination from './Paginacao';
 import RepoData from './RepoData';
 import { loadDataRequestRepos } from '../actions/repoActions';
 import { connect } from 'react-redux';
@@ -38,6 +38,7 @@ class Paginacao extends Component {
             <p style={{ color: '#a6a6a6' }}>programming language</p>
           </Container>
         </Jumbotron>
+
         <Pagination
           totalRecords={total_count}
           pageLimit={30}
