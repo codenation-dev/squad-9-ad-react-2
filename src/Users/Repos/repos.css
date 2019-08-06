@@ -1,0 +1,7 @@
+.MuiTableCell-root {
+  padding: 0 !important;
+}
+
+.MuiTableCell-root:last-child {
+  padding-right: 0 !important;
+}
