@@ -28,24 +28,6 @@ class RepoData extends Component {
       this.props.loadDataRequestRepos(this.props.query, this.props.pagina);
   }
 
-  // componentWillUnmount() {
-  //   console.log('unmounting');
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(
-  //     'this.props',
-  //     this.props.total_count,
-  //     'nextProps',
-  //     nextProps.total_count
-  //   );
-  //   return console.log(
-  //     this.props.total_count === nextProps.total_count ? false : true
-  //   );
-  //   // this.props.title !== nextProps.title ||
-  //   // this.state.input !== nextState.input
-  // }
-
   //html_url
   //id
   //language
@@ -57,10 +39,7 @@ class RepoData extends Component {
     return (
       <div style={{ textAlign: 'center' }}>
         {this.props.repo ? (
-          <div
-            className='row'
-            style={{ justifyContent: 'center', marginLeft: '55px' }}
-          >
+          <div className='row' style={{ justifyContent: 'center' }}>
             {this.props.repo.items.map((repo, index) => {
               const {
                 owner: { login, avatar_url },

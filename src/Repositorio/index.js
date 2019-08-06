@@ -41,10 +41,7 @@ class Paginacao extends Component {
         <Jumbotron fluid style={{ marginLeft: '55px' }}>
           <Container>
             <h1>{this.query}</h1>
-            <p>
-              This is a modified jumbotron that occupies the entire horizontal
-              space of its parent.
-            </p>
+            <p style={{ color: '#a6a6a6' }}>programming language</p>
           </Container>
         </Jumbotron>
         <Pagination

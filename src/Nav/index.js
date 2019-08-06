@@ -66,18 +66,24 @@ class NavBar extends Component {
 
   render() {
     const { searchRepos, query } = this.state;
+    const { windowWidth } = this.props;
 
     return (
       <div
         style={{
           textAlign: 'center',
-          width: '50%',
-          marginTop: '16%',
-          marginLeft: '27%'
+          width: windowWidth < 500 ? 'inherit' : '50%',
+          marginTop: windowWidth < 500 ? '30%' : '15%',
+          marginLeft: 'auto',
+          marginRight: 'auto'
         }}
       >
         <div>
-          <img src={logo} width={'350px'} alt='github-logo' />
+          <img
+            src={logo}
+            width={windowWidth > 500 ? '350px' : '280px'}
+            alt='github-logo'
+          />
         </div>
         {/*<Repositorio/>*/}
 
@@ -107,9 +113,7 @@ class NavBar extends Component {
             <FormGroup row={true}>
               <TextField
                 id='outlined-name'
-                label={`Search GitHub ${
-                  searchRepos ? 'Repositories' : 'Users'
-                }`}
+                label={searchRepos ? 'By language' : 'By username'}
                 value={query}
                 onChange={({ target: { value, name } }) => {
                   this.setState({
@@ -136,6 +140,10 @@ class NavBar extends Component {
       </div>
     );
   }
+
+  static defaultProps = {
+    windowWidth: window.innerWidth
+  };
 }
 
 export default withRouter(NavBar);

@@ -22,11 +22,11 @@ function App() {
         {/*<Row>*/}
         {/*<Col md={12} style={{background: 'red'}}>Nav</Col>*/}
         {/*</Row>*/}
-        <Row>
+        {/* <Row>
           <div style={{ height: '100%', position: 'absolute' }}>
             <Sidebar />
           </div>
-        </Row>
+        </Row> */}
       </Container>
     </Provider>
   );

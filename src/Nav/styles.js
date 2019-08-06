@@ -23,17 +23,13 @@ const Nav = styled.div`
   }
 `;
 
-
-
-
 const NavPesquisa2 = styled.div`
   margin-top: 0px;
 `;
 
-
 const NavPesquisa = styled.div`
   margin-top: 200px;
-  margin-left: 500px;
+  margin-left: auto;
 `;
 
 const Input = styled.input`
