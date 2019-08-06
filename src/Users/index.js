@@ -12,6 +12,7 @@ import {
 } from './styles';
 import UserRepos from './Repos';
 import UserSearchBar from '../Nav/UserSearchBar';
+import { Spinner } from 'react-bootstrap';
 
 class User extends Component {
   componentDidMount() {
@@ -26,7 +27,14 @@ class User extends Component {
   render() {
     const { user, error, isFetching, status } = this.props;
 
-    if (isFetching) return <StatusMessage>Loading data...</StatusMessage>;
+    if (isFetching)
+      return (
+        <div style={{ marginTop: '15%', textAlign: 'center' }}>
+          <Spinner animation='grow' />
+          <Spinner animation='grow' />
+          <Spinner animation='grow' />
+        </div>
+      );
     if (error)
       return (
         <StatusMessage>

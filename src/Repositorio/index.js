@@ -10,7 +10,6 @@ class Paginacao extends Component {
   constructor(props) {
     super(props);
     this.query = props.match.params.repoQuery;
-    //this.total_count = 0;
     this.state = {
       total_count: null,
       pagina_atual: 1
@@ -26,18 +25,13 @@ class Paginacao extends Component {
 
   onPageChanged = data => {
     let { currentPage } = data;
-    //console.log(data);
-    // if (currentPage === 1) {
-    // } else {
     this.setState({ pagina_atual: currentPage });
-    //this.props.loadDataRequestRepos(this.query, currentPage);
-    //}
   };
 
   render() {
     const { total_count, pagina_atual } = this.state;
     return (
-      <div style={{ margin: '64px' }}>
+      <div style={{ margin: '64px', animation: 'fadeIn ease-in-out 1.5s' }}>
         <Jumbotron fluid style={{ marginLeft: '55px' }}>
           <Container>
             <h1>{this.query}</h1>
@@ -52,7 +46,6 @@ class Paginacao extends Component {
           onPageChanged={e => this.onPageChanged(e)}
           key={total_count}
         />
-        {console.log(!!total_count)}
 
         {total_count ? (
           <RepoData pagina={pagina_atual} query={this.query} />
@@ -63,7 +56,7 @@ class Paginacao extends Component {
 }
 
 const mapStateToProps = state => {
-  const { data, error, isFetching, status, total_count } = state.repo;
+  const { total_count } = state.repo;
 
   return {
     total_count

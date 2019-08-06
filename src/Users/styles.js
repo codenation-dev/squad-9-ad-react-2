@@ -6,6 +6,8 @@ const CardPrincipal = styled.div`
   font-size: 20px;
   color: #097b65;
   flex: 1;
+
+  animation: fadeIn ease-in-out 1.5s;
 `;
 
 const CardUserInfo = styled.div`
@@ -22,14 +24,14 @@ const CardUserInfoHeader = styled.div`
   align-items: flex-start;
   border-bottom: 1px solid black;
   padding-bottom: 5px;
-`
+`;
 
 const CardUserInfoContent = styled.div`
-    font-size: .75em;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-`
+  font-size: 0.75em;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
 
 const Logo = styled.img`
   width: 400px;
@@ -48,4 +50,12 @@ const StatusMessage = styled.h1`
   margin-top: 10%;
 `;
 
-export { CardPrincipal, CardUserInfo, Logo, UserAvatar, StatusMessage, CardUserInfoHeader, CardUserInfoContent };
+export {
+  CardPrincipal,
+  CardUserInfo,
+  Logo,
+  UserAvatar,
+  StatusMessage,
+  CardUserInfoHeader,
+  CardUserInfoContent
+};

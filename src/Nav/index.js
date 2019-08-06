@@ -75,7 +75,8 @@ class NavBar extends Component {
           width: windowWidth < 500 ? 'inherit' : '50%',
           marginTop: windowWidth < 500 ? '30%' : '15%',
           marginLeft: 'auto',
-          marginRight: 'auto'
+          marginRight: 'auto',
+          animation: 'fadeIn ease-in-out 1.5s'
         }}
       >
         <div>
