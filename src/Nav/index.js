@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { Nav, NavPesquisa, Input } from "./styles";
-import { withRouter } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import Repositorio from "../Repositorio";
-import { Col, Container, FormControl, InputGroup } from "react-bootstrap";
-import Icon from "@material-ui/core/Icon";
-import logo from "../images/git-img.png";
-import { Provider } from "react-redux";
-import Switch from "@material-ui/core/Switch";
-import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
-import FormGroup from "@material-ui/core/FormGroup";
-import IconButton from "@material-ui/core/IconButton";
-import Grid from "@material-ui/core/Grid";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import React, { Component } from 'react';
+import { Nav, NavPesquisa, Input } from './styles';
+import { withRouter } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Repositorio from '../Repositorio';
+import { Col, Container, FormControl, InputGroup } from 'react-bootstrap';
+import Icon from '@material-ui/core/Icon';
+import logo from '../images/git-img.png';
+import { Provider } from 'react-redux';
+import Switch from '@material-ui/core/Switch';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
+import FormGroup from '@material-ui/core/FormGroup';
+import IconButton from '@material-ui/core/IconButton';
+import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -37,7 +37,7 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "",
+      query: '',
       searchRepos: false
     };
   }
@@ -55,7 +55,7 @@ class NavBar extends Component {
     if (searchRepos) push(`/repositories/${query}`);
     else push(query);
 
-    this.setState({ query: "" });
+    this.setState({ query: '' });
   };
 
   handleSwitch = () => {
@@ -70,14 +70,14 @@ class NavBar extends Component {
     return (
       <div
         style={{
-          textAlign: "center",
-          width: "50%",
-          marginTop: "16%",
-          marginLeft: "27%"
+          textAlign: 'center',
+          width: '50%',
+          marginTop: '16%',
+          marginLeft: '27%'
         }}
       >
         <div>
-          <img src={logo} width={"350px"} alt="github-logo" />
+          <img src={logo} width={'350px'} alt='github-logo' />
         </div>
         {/*<Repositorio/>*/}
 
@@ -85,8 +85,8 @@ class NavBar extends Component {
         <Switch
           checked={searchRepos}
           onChange={this.handleSwitch}
-          value={searchRepos ? "repositories" : "username"}
-          inputProps={{ "aria-label": "secondary checkbox" }}
+          value={searchRepos ? 'repositories' : 'username'}
+          inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
         <span item>Repositories</span>
         <form onSubmit={e => this.handleSubmit(e)}>
@@ -106,9 +106,9 @@ class NavBar extends Component {
           <Grid item xs={12}>
             <FormGroup row={true}>
               <TextField
-                id="outlined-name"
+                id='outlined-name'
                 label={`Search GitHub ${
-                  searchRepos ? "Repositories" : "Users"
+                  searchRepos ? 'Repositories' : 'Users'
                 }`}
                 value={query}
                 onChange={({ target: { value, name } }) => {
@@ -117,13 +117,13 @@ class NavBar extends Component {
                     query: value
                   });
                 }}
-                margin="normal"
-                style={{ flex: "1" }}
-                variant="outlined"
+                margin='normal'
+                style={{ flex: '1' }}
+                variant='outlined'
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton type="submit">
+                    <InputAdornment position='start'>
+                      <IconButton type='submit' style={{ outline: 0 }}>
                         <SearchIcon />
                       </IconButton>
                     </InputAdornment>

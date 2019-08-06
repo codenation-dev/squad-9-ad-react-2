@@ -35,8 +35,9 @@ class Paginacao extends Component {
   };
 
   render() {
+    const { total_count, pagina_atual } = this.state;
     return (
-      <div style={{ margin: '100px' }}>
+      <div style={{ margin: '64px' }}>
         <Jumbotron fluid style={{ marginLeft: '55px' }}>
           <Container>
             <h1>{this.query}</h1>
@@ -47,17 +48,18 @@ class Paginacao extends Component {
           </Container>
         </Jumbotron>
         <Pagination
-          totalRecords={this.state.total_count}
+          totalRecords={total_count}
           pageLimit={30}
           pageNeighbours={2}
           defaultCurrent={1}
           onPageChanged={e => this.onPageChanged(e)}
-          key={this.state.total_count}
+          key={total_count}
         />
+        {console.log(!!total_count)}
 
-        {this.state.total_count && (
-          <RepoData pagina={this.state.pagina_atual} query={this.query} />
-        )}
+        {total_count ? (
+          <RepoData pagina={pagina_atual} query={this.query} />
+        ) : null}
       </div>
     );
   }

@@ -28,10 +28,6 @@ class RepoData extends Component {
       this.props.loadDataRequestRepos(this.props.query, this.props.pagina);
   }
 
-  // consultaApi = () => {
-  //   this.props.loadDataRequestRepos(this.props.query, this.props.pagina);
-  // }
-
   // componentWillUnmount() {
   //   console.log('unmounting');
   // }
@@ -66,6 +62,12 @@ class RepoData extends Component {
             style={{ justifyContent: 'center', marginLeft: '55px' }}
           >
             {this.props.repo.items.map((repo, index) => {
+              const {
+                owner: { login, avatar_url },
+                name,
+                description,
+                language
+              } = repo;
               return (
                 <Card border='info' style={{ width: '18rem', margin: '5px ' }}>
                   <Card.Header
@@ -74,18 +76,20 @@ class RepoData extends Component {
                     <Image
                       width='50px'
                       style={{ marginRight: '10px' }}
-                      src={repo.owner.avatar_url}
+                      src={avatar_url}
                       roundedCircle
                     />
-                    {repo.owner.login}
+                    {login}
                   </Card.Header>
                   <Card.Body>
-                    <Card.Title>{repo.name}</Card.Title>
-                    <Card.Text>{repo.description}</Card.Text>
+                    <Card.Title>{name}</Card.Title>
+                    <Card.Text>
+                      {description && description.length > 168
+                        ? `${description.substr(0, 168)}...`
+                        : description}
+                    </Card.Text>
                   </Card.Body>
-                  <Card.Footer className='text-muted'>
-                    {repo.language}
-                  </Card.Footer>
+                  <Card.Footer className='text-muted'>{language}</Card.Footer>
                 </Card>
               );
             })}
