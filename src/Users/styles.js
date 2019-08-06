@@ -40,9 +40,10 @@ const Logo = styled.img`
 const UserAvatar = styled.img`
   max-width: 10em;
   max-height: 10em;
-  border: 3px solid #00000045;
+  border: 3px solid #dedede;
   border-radius: 50%;
   margin-right: 1em;
+  box-shadow: 0px 0px 20px 0px #31333f;
 `;
 
 const StatusMessage = styled.h1`

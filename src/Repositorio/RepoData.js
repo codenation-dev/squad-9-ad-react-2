@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadDataRequestRepos } from '../actions/repoActions';
 import Button from '@material-ui/core/Button';
-import Pagination from '../Paginacao';
+import Pagination from './Paginacao';
 import {
   Card,
   Col,
