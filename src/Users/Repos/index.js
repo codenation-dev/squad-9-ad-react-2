@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { loadUserRepos } from "../../actions";
 import { connect } from "react-redux";
+import Repositories from './Repositories';
+import './repos.css'
 
 class UserRepos extends Component {
   constructor(props) {
@@ -9,6 +11,8 @@ class UserRepos extends Component {
       isLoading: true,
       repos: []
     };
+
+    this.handleRepo = this.handleRepo.bind(this);
   }
 
   componentDidMount() {
@@ -34,25 +38,14 @@ class UserRepos extends Component {
     return newRop;
   };
 
+  forceUpdate = year => {
+    this.handleRepo(year)
+  };
+
   render() {
     return (
       <>
-        <div>
-          {this.getYears().map(year => (
-            <button onClick={() => this.handleRepo(year)}>{year}</button>
-          ))}
-        </div>
-        <div>
-          {this.state.repos.map(repo => {
-            return (
-              <>
-                <a href={repo.html_url} target="_blank">
-                  <div>{repo.name}</div>
-                </a>
-              </>
-            );
-          })}
-        </div>
+        <Repositories years={this.getYears()} repos={this.state.repos} forceUpdate={this.forceUpdate}/>
       </>
     );
   }
