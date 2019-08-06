@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Nav, NavPesquisa, NavPesquisa2, Input } from './styles';
 import { withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { loadDataRequest } from '../actions';
-import { connect } from 'react-redux';
+import {FormControl, InputGroup, Row} from "react-bootstrap";
+import Icon from "@material-ui/core/Icon";
+import Switch from "@material-ui/core/Switch";
+
+
+
 
 class NavBar2 extends Component {
   constructor(props) {
@@ -26,25 +29,29 @@ class NavBar2 extends Component {
 
   render() {
     return (
+      <Nav>
+      <div style={{ width: '30%', marginLeft: '10%', marginTop: '15px'}}>  
+      <form onSubmit={e => this.handleSubmit(e)}>
      
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <NavPesquisa2>
-            <Input
-              label='Users'
-              name={'user'}
-              value={this.state.user}
-              onChange={this.handleValue}
-            />
-
-            <Button
-              onClick={e => this.handleSubmit(e)}
-              variant='contained'
-              color='default'
-            >
-              Pesquisar
-            </Button>
-          </NavPesquisa2>
-        </form>
+        <InputGroup className="mb-4">
+     
+          <FormControl
+            placeholder="Users..."
+            name={'user'}
+            value={this.state.user}
+            onChange={this.handleValue}
+          />
+          <InputGroup.Append>
+            <InputGroup.Text id="basic-addon2"><Icon  onClick={e => this.handleSubmit(e)}>search</Icon></InputGroup.Text>
+          </InputGroup.Append>
+          
+        
+        </InputGroup>
+          
+        
+      </form>
+      </div>
+      </Nav>
      
     );
   }
