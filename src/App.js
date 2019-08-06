@@ -6,7 +6,8 @@ import User from './Users';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Home from './containers/Home';
-import Repositorio from './Repositorio';
+//import Repositorio from './Repositorio';
+import Paginacao from './Repositorio';
 import { Col, Container, Row } from 'react-bootstrap';
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
 
       <Route exact path='/' component={Home} />
       <Route path='/:nameUser' exact component={User} />
-      <Route path='/repositories/:repoQuery' exact component={Repositorio} />
+      <Route path='/repositories/:repoQuery' exact component={Paginacao} />
       {/*</div>*/}
     </Provider>
   );

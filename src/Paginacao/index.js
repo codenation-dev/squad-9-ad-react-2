@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
-const LEFT_PAGE = "LEFT";
-const RIGHT_PAGE = "RIGHT";
+const LEFT_PAGE = 'LEFT';
+const RIGHT_PAGE = 'RIGHT';
 
 const range = (from, to, step = 1) => {
   let i = from;
@@ -21,11 +21,11 @@ class Pagination extends Component {
     super(props);
     const { totalRecords = null, pageLimit = 30, pageNeighbours = 0 } = props;
 
-    this.pageLimit = typeof pageLimit === "number" ? pageLimit : 30;
-    this.totalRecords = typeof totalRecords === "number" ? totalRecords : 0;
+    this.pageLimit = typeof pageLimit === 'number' ? pageLimit : 30;
+    this.totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
 
     this.pageNeighbours =
-      typeof pageNeighbours === "number"
+      typeof pageNeighbours === 'number'
         ? Math.max(0, Math.min(pageNeighbours, 2))
         : 0;
 
@@ -123,36 +123,44 @@ class Pagination extends Component {
 
     return (
       <Fragment>
-        <div className="row justify-content-end">
-          <div className="col-12">
-            <nav aria-label="Countries Pagination">
-              <ul className="pagination">
+        <div className='row justify-content-end'>
+          <div
+            className='col-12'
+            style={{
+              width: '100%',
+              textAlign: 'center',
+              marginLeft: '55px',
+              marginBottom: '40px'
+            }}
+          >
+            <nav aria-label='Countries Pagination'>
+              <ul className='pagination' style={{ display: 'inline-flex' }}>
                 {pages.map((page, index) => {
                   if (page === LEFT_PAGE)
                     return (
-                      <li key={index} className="page-item">
+                      <li key={index} className='page-item'>
                         <a
-                          className="page-link"
-                          href="/"
-                          aria-label="Previous"
+                          className='page-link'
+                          href='/'
+                          aria-label='Previous'
                           onClick={this.handleMoveLeft}
                         >
-                          <span aria-hidden="true">&laquo;</span>
-                          <span className="sr-only">Previous</span>
+                          <span aria-hidden='true'>&laquo;</span>
+                          <span className='sr-only'>Previous</span>
                         </a>
                       </li>
                     );
                   if (page === RIGHT_PAGE)
                     return (
-                      <li key={index} className="page-item">
+                      <li key={index} className='page-item'>
                         <a
-                          className="page-link"
-                          href="/"
-                          aria-label="Next"
+                          className='page-link'
+                          href='/'
+                          aria-label='Next'
                           onClick={this.handleMoveRight}
                         >
-                          <span aria-hidden="true">&raquo;</span>
-                          <span className="sr-only">Next</span>
+                          <span aria-hidden='true'>&raquo;</span>
+                          <span className='sr-only'>Next</span>
                         </a>
                       </li>
                     );
@@ -161,12 +169,12 @@ class Pagination extends Component {
                     <li
                       key={index}
                       className={`page-item${
-                        currentPage === page ? " active" : ""
-                        }`}
+                        currentPage === page ? ' active' : ''
+                      }`}
                     >
                       <a
-                        className="page-link"
-                        href="/"
+                        className='page-link'
+                        href='/'
                         onClick={e => this.handleClick(page, e)}
                       >
                         {page}
