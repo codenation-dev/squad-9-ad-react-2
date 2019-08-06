@@ -16,14 +16,29 @@ const CardUserInfo = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin-top: 40px;
+`;
+
+const CardUserLogin = styled.span`
+  font-size: 0.65em;
+  color: #dd7094;
+  margin-left: 4px;
 `;
 
 const CardUserInfoHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #e2bac7;
   padding-bottom: 5px;
+
+  a {
+    color: #2a3679;
+  }
+  a:hover {
+    color: #e0a036;
+    text-decoration: none;
+  }
 `;
 
 const CardUserInfoContent = styled.div`
@@ -31,6 +46,7 @@ const CardUserInfoContent = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  color: #0000008f;
 `;
 
 const Logo = styled.img`
@@ -58,5 +74,6 @@ export {
   UserAvatar,
   StatusMessage,
   CardUserInfoHeader,
-  CardUserInfoContent
+  CardUserInfoContent,
+  CardUserLogin
 };

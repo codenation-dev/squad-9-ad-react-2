@@ -8,7 +8,8 @@ import {
   UserAvatar,
   StatusMessage,
   CardUserInfoHeader,
-  CardUserInfoContent
+  CardUserInfoContent,
+  CardUserLogin
 } from './styles';
 import UserRepos from './Repos';
 import UserSearchBar from '../Nav/UserSearchBar';
@@ -56,7 +57,7 @@ class User extends Component {
                 <UserAvatar src={user.avatar_url} />
                 <CardUserInfo>
                   <CardUserInfoHeader>
-                    <h3>
+                    <h2>
                       <a
                         href={user.html_url}
                         target='_blank'
@@ -64,8 +65,8 @@ class User extends Component {
                       >
                         {user.name}
                       </a>
-                    </h3>
-                    <span style={{ fontSize: '0.75em' }}>{user.login}</span>
+                    </h2>
+                    <CardUserLogin>{user.login}</CardUserLogin>
                   </CardUserInfoHeader>
                   <CardUserInfoContent>
                     <div>Repositórios públicos: {user.public_repos}</div>
