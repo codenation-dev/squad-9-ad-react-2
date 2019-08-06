@@ -7,12 +7,18 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Home from './containers/Home';
 import Paginacao from './Repositorio';
+import Bars from './Bars';
 import { Col, Container, Row } from 'react-bootstrap';
 
 function App() {
   return (
     <Provider store={store}>
       <Container fluid={true}>
+        <Bars>
+          <Route exact path='/' component={Home} />
+          <Route path='/:nameUser' exact component={User} />
+          <Route path='/repositories/:repoQuery' exact component={Paginacao} />
+        </Bars>
         {/*<Row>*/}
         {/*<Col md={12} style={{background: 'red'}}>Nav</Col>*/}
         {/*</Row>*/}
@@ -22,10 +28,6 @@ function App() {
           </div>
         </Row>
       </Container>
-
-      <Route exact path='/' component={Home} />
-      <Route path='/:nameUser' exact component={User} />
-      <Route path='/repositories/:repoQuery' exact component={Paginacao} />
     </Provider>
   );
 }
