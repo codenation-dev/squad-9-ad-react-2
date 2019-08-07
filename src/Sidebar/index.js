@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { SidebarStyle, LegendaSidebar } from './styles';
 import Icon from '@material-ui/core/Icon';
 import { withRouter } from 'react-router-dom';
+import UserItem from './UserBase/UserItem';
+//import { connect } from 'react-redux';
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
+    this.userBase = localStorage.getItem('userBase');
+
     this.state = {
       status: false
     };
@@ -72,9 +76,19 @@ class Sidebar extends Component {
           {/*<span><small style={{marginLeft: '5px', fontSize: '10px'}}>{this.state.status ? "PESQUISADOS" : ""}</small></span>*/}
           {/*</span>*/}
         </div>
+        {this.userBase &&
+          JSON.parse(this.userBase).map(user => <UserItem user={user} />)}
       </SidebarStyle>
     );
   }
 }
 
+// const mapStateToProps = state => {
+//   const { data } = state.userSearch;
+//   return {
+//     user: data[0]
+//   };
+// };
+
+// export default connect(mapStateToProps)(withRouter(Sidebar));
 export default withRouter(Sidebar);
