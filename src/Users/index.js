@@ -8,25 +8,43 @@ import {
   UserAvatar,
   StatusMessage,
   CardUserInfoHeader,
-  CardUserInfoContent
+  CardUserInfoContent,
+  CardUserLogin
 } from './styles';
 import UserRepos from './Repos';
-import Navbar2 from '../Nav/index2';
+import UserSearchBar from '../Nav/UserSearchBar';
+import {FormControl, FormGroup, InputGroup, Spinner} from 'react-bootstrap';
+import {Nav} from "../Nav/styles";
+import Grid from "../Nav";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from '@material-ui/icons/Search';
+import Switch from "@material-ui/core/Switch";
+import logo from '../images/GitHub_Logo.png'
+import NavBar2 from '../Nav/index2'
 
 class User extends Component {
   componentDidMount() {
     const user = this.props.match.params.nameUser;
     this.props.loadDataRequest(user);
   }
-  
-  handleRequest = (user) => {
+
+  handleRequest = user => {
     this.props.loadDataRequest(user);
-  }
+  };
 
   render() {
     const { user, error, isFetching, status } = this.props;
 
-    if (isFetching) return <StatusMessage>Loading data...</StatusMessage>;
+    if (isFetching)
+      return (
+        <div style={{ marginTop: '15%', textAlign: 'center' }}>
+          <Spinner animation='grow' />
+          <Spinner animation='grow' />
+          <Spinner animation='grow' />
+        </div>
+      );
     if (error)
       return (
         <StatusMessage>
@@ -36,16 +54,16 @@ class User extends Component {
 
     return (
       <>
-        <Navbar2 handleRequest={this.handleRequest} />
-        <CardPrincipal>
-          {user.map(user => {
-            return (
-              <div style={{ display: 'flex' }}>
+        <NavBar2/>
+        {user.map(user => {
+          return (
+            <CardPrincipal s>
+              <div style={{ display: 'flex', marginTop: '8rem'}}>
                 {/*<Logo className="logo" src={logoGithub} alt="Logo" />*/}
                 <UserAvatar src={user.avatar_url} />
                 <CardUserInfo>
                   <CardUserInfoHeader>
-                    <h3>
+                    <h2>
                       <a
                         href={user.html_url}
                         target='_blank'
@@ -53,8 +71,8 @@ class User extends Component {
                       >
                         {user.name}
                       </a>
-                    </h3>
-                    <span style={{ fontSize: '0.75em' }}>{user.login}</span>
+                    </h2>
+                    <CardUserLogin>{user.login}</CardUserLogin>
                   </CardUserInfoHeader>
                   <CardUserInfoContent>
                     <div>Repositórios públicos: {user.public_repos}</div>
@@ -62,12 +80,11 @@ class User extends Component {
                     <div>Seguindo: {user.following}</div>
                   </CardUserInfoContent>
                 </CardUserInfo>
-
-                {user.login && <UserRepos repos_url={user.repos_url} />}
               </div>
-            );
-          })}
-        </CardPrincipal>
+              {user.login && <UserRepos repos_url={user.repos_url} />}
+            </CardPrincipal>
+          );
+        })}
       </>
     );
   }
