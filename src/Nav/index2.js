@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { Nav, NavPesquisa, NavPesquisa2, Input } from './styles';
 import { withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { loadDataRequest } from '../actions';
-import { connect } from 'react-redux';
+import {Nav} from "./styles";
+import {FormControl, InputGroup} from "react-bootstrap";
+import SearchIcon from '@material-ui/icons/Search';
+import Switch from "@material-ui/core/Switch";
+import logo from '../images/GitHub_Logo.png'
+
+
+
 
 class NavBar2 extends Component {
   constructor(props) {
@@ -26,25 +30,40 @@ class NavBar2 extends Component {
 
   render() {
     return (
-     
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <NavPesquisa2>
-            <Input
-              label='Users'
-              name={'user'}
-              value={this.state.user}
-              onChange={this.handleValue}
-            />
+      <Nav>
 
-            <Button
-              onClick={e => this.handleSubmit(e)}
-              variant='contained'
-              color='default'
-            >
-              Pesquisar
-            </Button>
-          </NavPesquisa2>
+
+        <div style={{marginTop: '15px', marginRight: '150px'}}>
+          <img src={logo} width={'160px'}></img>
+        </div>
+
+        <form onSubmit={e => this.handleSubmit(e)}>
+          <div style={{marginTop: '10px'}}>
+
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Recipient's username"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+              />
+              <InputGroup.Append>
+                <InputGroup.Text >
+                  <SearchIcon />
+                </InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
+          </div>
         </form>
+        <div style={{marginTop: '15px'}}>
+          <Switch
+            checked={true}
+            onChange={''}
+            color="secondary"
+            value={true ? 'repositories' : 'username'}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
+        </div>
+      </Nav>
      
     );
   }

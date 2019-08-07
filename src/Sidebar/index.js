@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { SidebarStyle, LegendaSidebar } from "./styles";
-import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
 
 class Sidebar extends Component {
@@ -18,30 +17,24 @@ class Sidebar extends Component {
   render() {
     return (
       <SidebarStyle width={this.state.status}>
-        <div>
-          <Icon style={{marginTop: '100px'}} onClick={this.handleSidebar}>settings</Icon>
-          <LegendaSidebar>{this.state.status ? "Menu" : ""}</LegendaSidebar>
-        </div>
-        <div>
-         
-            <Icon>home</Icon>
-            <LegendaSidebar>{this.state.status ? "Inicio" : ""}</LegendaSidebar>
-    
-        </div>
-        <div>
-     
-            <Icon>backspace</Icon>
-            <LegendaSidebar>{this.state.status ? "Limpar" : ""}</LegendaSidebar>
-     
-        </div>
-        <div>
-          
-            <Icon>group</Icon>
-            <LegendaSidebar>
-              {this.state.status ? "Pesquisados" : ""}
-            </LegendaSidebar>
-         
-        </div>
+          <div>
+            <span style={{display: 'flex', verticalAlign: 'center', alignItems: 'center', marginTop: '220px'}}>
+              <Icon onClick={this.handleSidebar}>settings</Icon>
+              <span><small style={{marginLeft: '5px', fontSize: '10px'}}>{this.state.status ? "MENU" : ""}</small></span>
+            </span>
+            <span style={{display: 'flex', verticalAlign: 'center', alignItems: 'center', }}>
+              <Icon>home</Icon>
+              <span><small style={{marginLeft: '5px', fontSize: '10px'}}>{this.state.status ? "INICIO" : ""}</small></span>
+           </span>
+            <span style={{display: 'flex', verticalAlign: 'center', alignItems: 'center', }}>
+              <Icon>backspace</Icon>
+              <span><small style={{marginLeft: '5px', fontSize: '10px'}}>{this.state.status ? "LIMPAR" : ""}</small></span>
+           </span>
+            {/*<span style={{display: 'flex', verticalAlign: 'center', alignItems: 'center', }}>*/}
+              {/*<Icon>group</Icon>*/}
+              {/*<span><small style={{marginLeft: '5px', fontSize: '10px'}}>{this.state.status ? "PESQUISADOS" : ""}</small></span>*/}
+           {/*</span>*/}
+          </div>
       </SidebarStyle>
     );
   }
