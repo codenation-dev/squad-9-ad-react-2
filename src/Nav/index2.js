@@ -10,8 +10,10 @@ class NavBar2 extends Component {
   constructor(props) {
     super(props);
     this.uri = props.match.params.query;
+    this.searchRepos = props.location.pathname.includes('repositories/');
     this.state = {
-      query: ''
+      query: '',
+      searchRepos: this.searchRepos
     };
   }
 
@@ -21,17 +23,24 @@ class NavBar2 extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleRequest(this.state.user);
-    this.props.history.push(this.state.user);
-    this.setState({ user: '' });
+    const { query, searchRepos } = this.state;
+    const { push, goBack, replace } = this.props.history;
+    if (searchRepos) push(`/repositories/${query}`);
+    else push(`/${query}`);
+
+    window.location.reload(); //reloads entire page, temporary solution.
   };
 
   onInputChange = e => {
     this.setState({ query: e.target.value });
   };
 
+  toggleSwitch = e => {
+    this.setState({ searchRepos: !this.state.searchRepos });
+  };
+
   render() {
-    const { query } = this.state;
+    const { query, searchRepos } = this.state;
     return (
       <Nav className='row'>
         <div
@@ -42,10 +51,10 @@ class NavBar2 extends Component {
         </div>
         <div className='col-7' style={{ alignSelf: 'center' }}>
           <Switch
-            checked={true}
-            onChange={''}
+            checked={searchRepos}
+            onChange={this.toggleSwitch}
             color='secondary'
-            value={true ? 'repositories' : 'username'}
+            value={searchRepos ? 'repositories' : 'username'}
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
           <form
@@ -54,7 +63,7 @@ class NavBar2 extends Component {
           >
             <InputGroup>
               <FormControl
-                placeholder='username'
+                placeholder={searchRepos ? 'language' : 'username'}
                 aria-label="Recipient's usernames"
                 aria-describedby='basic-addon2'
                 value={query}
