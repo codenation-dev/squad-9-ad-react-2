@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import {Nav} from "./styles";
-import {FormControl, InputGroup} from "react-bootstrap";
+import { Nav } from './styles';
+import { FormControl, InputGroup } from 'react-bootstrap';
 import SearchIcon from '@material-ui/icons/Search';
-import Switch from "@material-ui/core/Switch";
-import logo from '../images/GitHub_Logo.png'
-
-
-
+import Switch from '@material-ui/core/Switch';
+import logo from '../images/GitHub_Logo.png';
 
 class NavBar2 extends Component {
   constructor(props) {
     super(props);
+    this.uri = props.match.params.query;
+    this.searchRepos = props.location.pathname.includes('repositories/');
     this.state = {
-      user: ''
+      query: '',
+      searchRepos: this.searchRepos
     };
   }
 
@@ -23,48 +23,61 @@ class NavBar2 extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleRequest(this.state.user)
-    this.props.history.push(this.state.user);
-    this.setState({ user: '' });
+    const { query, searchRepos } = this.state;
+    const { push, goBack, replace } = this.props.history;
+    if (searchRepos) push(`/repositories/${query}`);
+    else push(`/${query}`);
+
+    window.location.reload(); //reloads entire page, temporary solution.
+  };
+
+  onInputChange = e => {
+    this.setState({ query: e.target.value });
+  };
+
+  toggleSwitch = e => {
+    this.setState({ searchRepos: !this.state.searchRepos });
   };
 
   render() {
+    const { query, searchRepos } = this.state;
     return (
-      <Nav>
-
-
-        <div style={{marginTop: '15px', marginRight: '150px'}}>
-          <img src={logo} width={'160px'}></img>
+      <Nav className='row'>
+        <div
+          className='col-5'
+          style={{ alignSelf: 'center', textAlign: 'center' }}
+        >
+          <img src={logo} width={'160px'} alt='github-logo' />
         </div>
-
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <div style={{marginTop: '10px'}}>
-
-            <InputGroup className="mb-3">
+        <div className='col-7' style={{ alignSelf: 'center' }}>
+          <Switch
+            checked={searchRepos}
+            onChange={this.toggleSwitch}
+            color='secondary'
+            value={searchRepos ? 'repositories' : 'username'}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
+          <form
+            style={{ display: 'inline-flex', alignSelf: 'center' }}
+            onSubmit={e => this.handleSubmit(e)}
+          >
+            <InputGroup>
               <FormControl
-                placeholder="Recipient's username"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
+                placeholder={searchRepos ? 'language' : 'username'}
+                aria-label="Recipient's usernames"
+                aria-describedby='basic-addon2'
+                value={query}
+                onChange={this.onInputChange}
               />
               <InputGroup.Append>
-                <InputGroup.Text >
+                <InputGroup.Text>
                   <SearchIcon />
                 </InputGroup.Text>
               </InputGroup.Append>
             </InputGroup>
-          </div>
-        </form>
-        <div style={{marginTop: '15px'}}>
-          <Switch
-            checked={true}
-            onChange={''}
-            color="secondary"
-            value={true ? 'repositories' : 'username'}
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-          />
+          </form>
         </div>
       </Nav>
-     
     );
   }
 }

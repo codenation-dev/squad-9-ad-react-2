@@ -1,5 +1,8 @@
+const userBase = localStorage.getItem('userBase');
+
 const INITIAL_STATE = {
   data: [],
+  userBase: userBase ? JSON.parse(userBase) : null,
   isFetching: false,
   error: false
 };

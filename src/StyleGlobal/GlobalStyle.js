@@ -19,6 +19,9 @@ export default createGlobalStyle`
     height: 100%
   }
 
+  .page-link:focus {
+    box-shadow: none !important; 
+
   @keyframes fadeIn {
     0% {
       opacity: 0;

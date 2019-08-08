@@ -12,30 +12,53 @@ import {
   CardUserLogin
 } from './styles';
 import UserRepos from './Repos';
-import UserSearchBar from '../Nav/UserSearchBar';
-import {FormControl, FormGroup, InputGroup, Spinner} from 'react-bootstrap';
-import {Nav} from "../Nav/styles";
-import Grid from "../Nav";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from '@material-ui/icons/Search';
-import Switch from "@material-ui/core/Switch";
-import logo from '../images/GitHub_Logo.png'
-import NavBar2 from '../Nav/index2'
+// import UserSearchBar from '../Nav/UserSearchBar';
+import { FormControl, FormGroup, InputGroup, Spinner } from 'react-bootstrap';
+// import { Nav } from '../Nav/styles';
+// import Grid from '../Nav';
+// import TextField from '@material-ui/core/TextField';
+// import InputAdornment from '@material-ui/core/InputAdornment';
+// import IconButton from '@material-ui/core/IconButton';
+// import SearchIcon from '@material-ui/icons/Search';
+// import Switch from '@material-ui/core/Switch';
+// import logo from '../images/GitHub_Logo.png';
+import NavBar2 from '../Nav/index2';
 
 class User extends Component {
-  componentDidMount() {
-    const user = this.props.match.params.nameUser;
+  constructor(props) {
+    super(props);
+    this.userBase = props.userBase;
+  }
+  componentWillMount() {
+    const user = this.props.match.params.query;
     this.props.loadDataRequest(user);
   }
 
-  handleRequest = user => {
-    this.props.loadDataRequest(user);
+  componentDidMount() {}
+
+  handleUserBase = () => {
+    let {
+      userData,
+      match: {
+        params: { query }
+      }
+    } = this.props;
+
+    const { userBase } = this;
+
+    const user = userBase.find(user => user.login === query);
+
+    if (!user) {
+      const { login, avatar_url } = [...userData][0];
+      localStorage.setItem(
+        'userBase',
+        JSON.stringify([...userBase, { login, avatar_url }])
+      );
+    }
   };
 
   render() {
-    const { user, error, isFetching, status } = this.props;
+    const { userData, error, isFetching, status } = this.props;
 
     if (isFetching)
       return (
@@ -54,12 +77,15 @@ class User extends Component {
 
     return (
       <>
-        <NavBar2/>
-        {user.map(user => {
+        {userData &&
+          userData.length > 0 &&
+          this.userBase &&
+          this.handleUserBase()}
+        <NavBar2 />
+        {userData.map(user => {
           return (
             <CardPrincipal s>
-              <div style={{ display: 'flex', marginTop: '8rem'}}>
-                {/*<Logo className="logo" src={logoGithub} alt="Logo" />*/}
+              <div style={{ display: 'flex', marginTop: '8rem' }}>
                 <UserAvatar src={user.avatar_url} />
                 <CardUserInfo>
                   <CardUserInfoHeader>
@@ -90,15 +116,16 @@ class User extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { data, error, isFetching, status } = state.userSearch;
+const mapStateToProps = state => {
+  const { data, userBase, error, isFetching, status } = state.userSearch;
   return {
-    user: data,
+    userBase,
+    userData: data || null,
     error,
     isFetching,
     status
   };
-}
+};
 
 export default connect(
   mapStateToProps,

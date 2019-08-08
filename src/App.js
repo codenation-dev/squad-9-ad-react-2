@@ -6,20 +6,19 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Home from './containers/Home';
 import Paginacao from './Repositorio';
-import NavBar from './Nav'
-
+import NavBar from './Nav';
 
 function App() {
   return (
     <Provider store={store}>
-     <>
-        <Sidebar/>
+      <>
+        <Sidebar />
         <Route exact path='/' component={NavBar} />
-          <div className='m-5'>
-            <Route path='/:nameUser' exact component={User} />
-          </div>
-          <Route path='/repositories/:repoQuery' exact component={Paginacao} />
-</>
+        <div className='m-5'>
+          <Route path='/:query' exact component={User} />
+        </div>
+        <Route path='/repositories/:query' exact component={Paginacao} />
+      </>
     </Provider>
   );
 }
