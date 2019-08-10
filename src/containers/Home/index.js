@@ -14,6 +14,7 @@ const Home = () => {
         // marginTop: windowWidth < 500 ? '30%' : '15%',
         marginLeft: 'auto',
         marginRight: 'auto',
+        marginTop: '10%',
         animation: 'fadeIn ease-in-out 1.5s'
       }}
     >

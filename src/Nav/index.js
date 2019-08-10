@@ -63,6 +63,11 @@ class NavBar extends Component {
     // });
   };
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.searchWord !== this.props.searchWord)
+      this.setState({ query: nextProps.searchWord });
+  }
+
   handleSwitch = () => {
     this.setState({
       searchRepos: !this.state.searchRepos
@@ -78,14 +83,6 @@ class NavBar extends Component {
         {this.state.status && (
           <div
             className={searchWord ? 'navbar-center nav-top' : 'navbar-center'}
-            // style={{
-            //   textAlign: 'center',
-            //   width: windowWidth < 500 ? 'inherit' : '50%',
-            //   // marginTop: windowWidth < 500 ? '30%' : '15%',
-            //   marginLeft: 'auto',
-            //   marginRight: 'auto',
-            //   animation: 'fadeIn ease-in-out 1.5s'
-            // }}
           >
             {/*<Repositorio/>*/}
             <div>
