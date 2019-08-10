@@ -27,6 +27,8 @@ class Sidebar extends Component {
 
   handleDeleteUser = e => {
     this.props.removeUsers();
+    this.props.changeSearchWord('');
+    this.props.userBase && this.props.history.push('/');
   };
 
   render() {

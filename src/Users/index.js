@@ -22,7 +22,11 @@ class User extends Component {
       username: ''
     };
   }
-  componentWillMount() {
+  // componentWillMount() {
+
+  // }
+
+  componentDidMount() {
     const user = this.props.match.params.query;
     this.props.loadDataRequest(user);
     this.props.changeSearchWord(user);

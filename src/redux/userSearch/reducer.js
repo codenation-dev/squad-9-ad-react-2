@@ -30,6 +30,12 @@ const userSearch = (state = INITIAL_STATE, action) => {
       status: action.data.status
     };
   }
+  if (action.type === 'REMOVE_USER') {
+    return {
+      ...state,
+      data: []
+    };
+  }
   return state;
 };
 

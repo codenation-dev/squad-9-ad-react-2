@@ -9,7 +9,7 @@ const UserItem = props => {
   return (
     <Link to={`/${user.login}`}>
       <div
-        style={{ marginLeft: '0px' }}
+        style={{ marginLeft: '0px', textAlign: 'center' }}
         onClick={() => props.changeSearchWord(user.login)}
       >
         <UserMiniAvatar
