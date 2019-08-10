@@ -7,7 +7,7 @@ const CardPrincipal = styled.div`
   color: #097b65;
   flex: 1;
 
-  animation: fadeIn ease-in-out 1.5s;
+  animation: fadeIn linear 1.5s;
 `;
 
 const CardUserInfo = styled.div`

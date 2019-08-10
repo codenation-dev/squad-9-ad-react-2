@@ -19,8 +19,18 @@ export default createGlobalStyle`
     height: 100%
   }
 
+  .page-link {
+    color: #a1a1a2 !important
+  }
+
   .page-link:focus {
     box-shadow: none !important; 
+  }
+
+  .page-item.active .page-link {
+    background-color: #303f52 !important;
+    border-color: #303f52 !important;
+  }
 
   @keyframes fadeIn {
     0% {

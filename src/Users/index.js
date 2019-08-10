@@ -66,7 +66,13 @@ class User extends Component {
 
     if (isFetching)
       return (
-        <div style={{ marginTop: '15%', textAlign: 'center' }}>
+        <div
+          style={{
+            marginTop: '15%',
+            textAlign: 'center',
+            animation: '1.5 fadeIn ease-in-out 1.5s'
+          }}
+        >
           <Spinner animation='grow' />
           <Spinner animation='grow' />
           <Spinner animation='grow' />
@@ -85,7 +91,7 @@ class User extends Component {
         {/* <NavBar2 /> */}
         {userData.map(user => {
           return (
-            <CardPrincipal s>
+            <CardPrincipal>
               <div style={{ display: 'flex', marginTop: '8rem' }}>
                 <UserAvatar src={user.avatar_url} />
                 <CardUserInfo>
