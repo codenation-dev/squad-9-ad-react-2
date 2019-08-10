@@ -12,29 +12,28 @@ import {
   CardUserLogin
 } from './styles';
 import UserRepos from './Repos';
-// import UserSearchBar from '../Nav/UserSearchBar';
+import { addUser } from '../actions/userBaseActions';
 import { FormControl, FormGroup, InputGroup, Spinner } from 'react-bootstrap';
-// import { Nav } from '../Nav/styles';
-// import Grid from '../Nav';
-// import TextField from '@material-ui/core/TextField';
-// import InputAdornment from '@material-ui/core/InputAdornment';
-// import IconButton from '@material-ui/core/IconButton';
-// import SearchIcon from '@material-ui/icons/Search';
-// import Switch from '@material-ui/core/Switch';
-// import logo from '../images/GitHub_Logo.png';
+
 import NavBar2 from '../Nav/index2';
 
 class User extends Component {
   constructor(props) {
     super(props);
-    this.userBase = props.userBase;
+    this.state = {
+      username: ''
+    };
   }
-  componentWillMount() {
+  async componentWillMount() {
     const user = this.props.match.params.query;
-    this.props.loadDataRequest(user);
+    await this.props.loadDataRequest(user);
   }
 
-  componentDidMount() {}
+  componentWillReceiveProps(nextProps) {
+    const username = nextProps.match.params.query;
+    if (this.props.match.params.query !== username)
+      this.props.loadDataRequest(username);
+  }
 
   handleUserBase = () => {
     let {
@@ -44,21 +43,23 @@ class User extends Component {
       }
     } = this.props;
 
-    const { userBase } = this;
+    const { userBase, addUser } = this.props;
 
     const user = userBase.find(user => user.login === query);
 
     if (!user) {
       const { login, avatar_url } = [...userData][0];
+
       localStorage.setItem(
         'userBase',
         JSON.stringify([...userBase, { login, avatar_url }])
       );
+      addUser({ login, avatar_url });
     }
   };
 
   render() {
-    const { userData, error, isFetching, status } = this.props;
+    const { userData, error, isFetching, status, userBase } = this.props;
 
     if (isFetching)
       return (
@@ -77,10 +78,7 @@ class User extends Component {
 
     return (
       <>
-        {userData &&
-          userData.length > 0 &&
-          this.userBase &&
-          this.handleUserBase()}
+        {userData && userData.length > 0 && userBase && this.handleUserBase()}
         <NavBar2 />
         {userData.map(user => {
           return (
@@ -117,7 +115,8 @@ class User extends Component {
 }
 
 const mapStateToProps = state => {
-  const { data, userBase, error, isFetching, status } = state.userSearch;
+  const { data, error, isFetching, status } = state.userSearch;
+  const { userBase } = state;
   return {
     userBase,
     userData: data || null,
@@ -129,5 +128,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loadDataRequest }
+  { loadDataRequest, addUser }
 )(withRouter(User));

@@ -8,9 +8,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import {withRouter} from "react-router-dom";
-import {Nav} from "./styles";
-
+import { withRouter } from 'react-router-dom';
+import { Nav } from './styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -35,13 +34,10 @@ class NavBar extends Component {
     this.state = {
       query: '',
       searchRepos: false,
-      status: true,
-
+      status: true
     };
   }
 
-
-  
   handleValue = ({ target: { value, name } }) => {
     this.setState({ [name]: value });
   };
@@ -52,11 +48,10 @@ class NavBar extends Component {
 
     e.preventDefault();
 
-
     if (searchRepos) push(`/repositories/${query}`);
     else push(query);
 
-    this.setState({ 
+    this.setState({
       query: '',
       status: false
     });
@@ -65,7 +60,6 @@ class NavBar extends Component {
   handleSwitch = () => {
     this.setState({
       searchRepos: !this.state.searchRepos
-
     });
   };
 
@@ -75,9 +69,7 @@ class NavBar extends Component {
 
     return (
       <>
-        {
-          this.state.status &&
-
+        {this.state.status && (
           <div
             style={{
               textAlign: 'center',
@@ -87,7 +79,13 @@ class NavBar extends Component {
               marginRight: 'auto',
               animation: 'fadeIn ease-in-out 1.5s'
             }}
-          ><br/><br/><br/><br/><br/><br/>
+          >
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div>
               <img
                 src={logo}
@@ -135,10 +133,8 @@ class NavBar extends Component {
               </Grid>
             </form>
           </div>
-            
-        }
-     
-</>
+        )}
+      </>
     );
   }
 

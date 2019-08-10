@@ -3,12 +3,14 @@ import { SidebarStyle, LegendaSidebar } from './styles';
 import Icon from '@material-ui/core/Icon';
 import { withRouter } from 'react-router-dom';
 import UserItem from './UserBase/UserItem';
-//import { connect } from 'react-redux';
+import { removeUsers } from '../actions/userBaseActions';
+
+import { connect } from 'react-redux';
+import UserList from './UserBase/UserList';
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
-    this.userBase = localStorage.getItem('userBase');
 
     this.state = {
       status: false
@@ -23,7 +25,12 @@ class Sidebar extends Component {
     this.props.history.push('/');
   };
 
+  handleDeleteUser = e => {
+    this.props.removeUsers();
+  };
+
   render() {
+    const { userBase } = this.props;
     return (
       <SidebarStyle width={this.state.status}>
         <div>
@@ -63,6 +70,7 @@ class Sidebar extends Component {
               verticalAlign: 'center',
               alignItems: 'center'
             }}
+            onClick={this.handleDeleteUser}
           >
             <Icon>backspace</Icon>
             <span>
@@ -71,24 +79,22 @@ class Sidebar extends Component {
               </small>
             </span>
           </span>
-          {/*<span style={{display: 'flex', verticalAlign: 'center', alignItems: 'center', }}>*/}
-          {/*<Icon>group</Icon>*/}
-          {/*<span><small style={{marginLeft: '5px', fontSize: '10px'}}>{this.state.status ? "PESQUISADOS" : ""}</small></span>*/}
-          {/*</span>*/}
         </div>
-        {this.userBase &&
-          JSON.parse(this.userBase).map(user => <UserItem user={user} />)}
+        <UserList />
       </SidebarStyle>
     );
   }
 }
 
-// const mapStateToProps = state => {
-//   const { data } = state.userSearch;
-//   return {
-//     user: data[0]
-//   };
-// };
+const mapStateToProps = state => {
+  const { userBase } = state;
+  return {
+    userBase
+  };
+};
 
-// export default connect(mapStateToProps)(withRouter(Sidebar));
-export default withRouter(Sidebar);
+export default connect(
+  mapStateToProps,
+  { removeUsers }
+)(withRouter(Sidebar));
+// export default withRouter(Sidebar);

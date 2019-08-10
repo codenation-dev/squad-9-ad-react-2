@@ -5,6 +5,7 @@ import RepoData from './RepoData';
 import { loadDataRequestRepos } from '../actions/repoActions';
 import { connect } from 'react-redux';
 import { Alert, Container, Jumbotron } from 'react-bootstrap';
+import { PageHeader } from './styles';
 import NavBar2 from '../Nav/index2';
 
 class Paginacao extends Component {
@@ -34,7 +35,7 @@ class Paginacao extends Component {
     return (
       <>
         <NavBar2 />
-        <div style={{ margin: '64px', animation: 'fadeIn ease-in-out 1.5s' }}>
+        <PageHeader className='container'>
           <div style={{ marginLeft: '50px', marginTop: '80px' }}>
             <Alert variant={'secondary'}>
               <h1>{this.query}</h1>
@@ -61,7 +62,7 @@ class Paginacao extends Component {
           {total_count ? (
             <RepoData pagina={pagina_atual} query={this.query} />
           ) : null}
-        </div>
+        </PageHeader>
       </>
     );
   }

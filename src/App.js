@@ -14,7 +14,7 @@ function App() {
       <>
         <Sidebar />
         <Route exact path='/' component={NavBar} />
-        <div className='m-5'>
+        <div className='container'>
           <Route path='/:query' exact component={User} />
         </div>
         <Route path='/repositories/:query' exact component={Paginacao} />

@@ -6,13 +6,14 @@ import { UserMiniAvatar } from './styles';
 const UserItem = props => {
   const { user } = props;
   return (
-    <Link to={user.login}>
+    <Link to={`/${user.login}`}>
       <div style={{ marginLeft: '0px' }}>
         <UserMiniAvatar
           width='40px'
           height='40px'
           src={user.avatar_url}
           alt={`${user.login}-avatar`}
+          name={user.login}
         />
       </div>
     </Link>
