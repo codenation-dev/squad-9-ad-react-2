@@ -25,6 +25,13 @@ class Paginacao extends Component {
       .then(res => this.setState({ total_count: res.data.total_count }));
   }
 
+  componentWillReceiveProps(nextProps) {
+    const username = nextProps.match.params.query;
+    console.log(nextProps, 'joww');
+    if (this.props.match.params.query !== username)
+      this.props.loadDataRequestRepos(username);
+  }
+
   onPageChanged = data => {
     let { currentPage } = data;
     this.setState({ pagina_atual: currentPage });
@@ -32,13 +39,14 @@ class Paginacao extends Component {
 
   render() {
     const { total_count, pagina_atual } = this.state;
+    const { query } = this.props.match.params;
     return (
       <>
         {/* <NavBar2 /> */}
         <PageHeader className='container'>
           <div style={{ marginLeft: '50px', marginTop: '80px' }}>
             <Alert variant={'secondary'}>
-              <h1>{this.query}</h1>
+              <h1>{query}</h1>
               <p style={{ color: '#a6a6a6' }}>programming language</p>
             </Alert>
           </div>
@@ -70,6 +78,7 @@ class Paginacao extends Component {
 
 const mapStateToProps = state => {
   const { total_count } = state.repo;
+  const { searchWord } = state;
 
   return {
     total_count

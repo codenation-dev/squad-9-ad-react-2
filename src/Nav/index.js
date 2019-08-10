@@ -53,14 +53,8 @@ class NavBar extends Component {
     e.preventDefault();
 
     if (searchRepos) push(`/repositories/${query}`);
-    else push(query);
+    else push(`/${query}`);
     this.props.changeSearchWord(query);
-
-    // this.setState({
-    //   query: '',
-    //   searchWord: query
-    //   // status: false
-    // });
   };
 
   componentWillUpdate(nextProps) {
@@ -76,7 +70,7 @@ class NavBar extends Component {
 
   render() {
     const { searchRepos, query } = this.state;
-    const { windowWidth, searchWord } = this.props;
+    const { searchWord } = this.props;
 
     return (
       <>

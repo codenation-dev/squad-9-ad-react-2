@@ -13,7 +13,7 @@ import {
 } from './styles';
 import UserRepos from './Repos';
 import { addUser } from '../actions/userBaseActions';
-import { FormControl, FormGroup, InputGroup, Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 
 import NavBar2 from '../Nav/index2';
 
@@ -24,9 +24,9 @@ class User extends Component {
       username: ''
     };
   }
-  async componentWillMount() {
+  componentWillMount() {
     const user = this.props.match.params.query;
-    await this.props.loadDataRequest(user);
+    this.props.loadDataRequest(user);
   }
 
   componentWillReceiveProps(nextProps) {
