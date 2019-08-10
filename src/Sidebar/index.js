@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { SidebarStyle, LegendaSidebar } from './styles';
+import { SidebarStyle } from './styles';
 import Icon from '@material-ui/core/Icon';
 import { withRouter } from 'react-router-dom';
-import UserItem from './UserBase/UserItem';
 import { removeUsers, changeSearchWord } from '../actions/userBaseActions';
 
 import { connect } from 'react-redux';
@@ -31,7 +30,6 @@ class Sidebar extends Component {
   };
 
   render() {
-    const { userBase } = this.props;
     return (
       <SidebarStyle width={this.state.status}>
         <div>
@@ -40,8 +38,7 @@ class Sidebar extends Component {
             style={{
               display: 'flex',
               verticalAlign: 'center',
-              alignItems: 'center',
-              marginTop: '220px'
+              alignItems: 'center'
             }}
           >
             <Icon>settings</Icon>

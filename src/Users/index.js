@@ -12,10 +12,8 @@ import {
   CardUserLogin
 } from './styles';
 import UserRepos from './Repos';
-import { addUser } from '../actions/userBaseActions';
+import { addUser, changeSearchWord } from '../actions/userBaseActions';
 import { Spinner } from 'react-bootstrap';
-
-import NavBar2 from '../Nav/index2';
 
 class User extends Component {
   constructor(props) {
@@ -27,6 +25,7 @@ class User extends Component {
   componentWillMount() {
     const user = this.props.match.params.query;
     this.props.loadDataRequest(user);
+    this.props.changeSearchWord(user);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -128,5 +127,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loadDataRequest, addUser }
+  { loadDataRequest, addUser, changeSearchWord }
 )(withRouter(User));

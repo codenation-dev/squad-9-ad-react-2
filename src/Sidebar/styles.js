@@ -8,6 +8,9 @@ const SidebarStyle = styled.div`
   height: 100%;
   background: #303f52;
   z-index: 222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   div {
     margin-left: 8px;

@@ -3,8 +3,9 @@ import axios from 'axios';
 import Pagination from './Paginacao';
 import RepoData from './RepoData';
 import { loadDataRequestRepos } from '../actions/repoActions';
+import { changeSearchWord } from '../actions/userBaseActions';
 import { connect } from 'react-redux';
-import { Alert, Container, Jumbotron } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import { PageHeader } from './styles';
 // import NavBar2 from '../Nav/index2';
 
@@ -16,6 +17,10 @@ class Paginacao extends Component {
       total_count: null,
       pagina_atual: 1
     };
+  }
+
+  componentWillMount() {
+    this.props.changeSearchWord(this.props.match.params.query);
   }
 
   componentDidMount() {
@@ -51,13 +56,6 @@ class Paginacao extends Component {
             </Alert>
           </div>
 
-          {/*<Jumbotron fluid style={{ marginLeft: '55px' }}>*/}
-          {/*<Container>*/}
-          {/*<h1>{this.query}</h1>*/}
-          {/*<p style={{ color: '#a6a6a6' }}>programming language</p>*/}
-          {/*</Container>*/}
-          {/*</Jumbotron>*/}
-
           <Pagination
             totalRecords={total_count}
             pageLimit={30}
@@ -78,7 +76,7 @@ class Paginacao extends Component {
 
 const mapStateToProps = state => {
   const { total_count } = state.repo;
-  const { searchWord } = state;
+  // const { searchWord } = state;
 
   return {
     total_count
@@ -87,5 +85,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loadDataRequestRepos }
+  { loadDataRequestRepos, changeSearchWord }
 )(Paginacao);
