@@ -28,12 +28,3 @@ export default connect(
   null,
   { changeSearchWord }
 )(UserItem);
-
-// const mapStateToProps = state => {
-//   const { data } = state.userSearch;
-//   return {
-//     user: data[0]
-//   };
-// };
-
-// export default connect(mapStateToProps)()

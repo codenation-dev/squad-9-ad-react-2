@@ -1,9 +1,7 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
-//Import rootSagas and createMiddleware function
 import rootSagas from './rootSagas';
 import createSagaMiddleware from 'redux-saga';
 import getUserRepos from './userRepos/reducer';
-// Import reducers
 import repo from './repo/reducer';
 import userSearch from './userSearch/reducer';
 import userBase from './userBase/reducer';

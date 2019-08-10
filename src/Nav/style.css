@@ -1,14 +1,4 @@
 .navbar-center {
-  /* text-align: center;
-  width: 50%;
-  margin-top: 15%;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeIn ease-in-out 1.5s;
-  position: absolute;
-  /* display: flex; */
-  /* align-self: center; 
-  width: 100%; */
   text-align: center;
   width: 50%;
 
@@ -32,9 +22,7 @@ div.nav-top * {
   border-color: #85859a !important;
 }
 
-/* div.nav-top .MuiFormLabel-root.Mui-focused .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  color: brown !important;
-} */
+
 
 div.nav-top .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: white !important;
@@ -42,8 +30,6 @@ div.nav-top .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline 
 
 .navbar-center form {
   width: 50%;
-  /* align-self: center; */
-  /* text-align: center; */
   margin: 0;
   padding: 0 20px;
 }
@@ -59,5 +45,3 @@ div.nav-top .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline 
   padding: 0 20px;
 }
 
-/* windowWidth < 500 ? '30%' : '15%',
-windowWidth < 500 ? 'inherit, 50%' */

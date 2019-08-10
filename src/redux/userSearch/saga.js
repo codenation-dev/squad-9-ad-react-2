@@ -5,8 +5,8 @@ import { put, takeLatest, all } from 'redux-saga/effects';
 import { loadDataFailure, loadDataSuccess } from '../../actions';
 
 function* getUser({ username }) {
+  console.log('usarnme!!!!!',username)
   try {
-    //const dados = yield axios.get(`https://api.github.com/users/${username}`);
     const dados = yield axios.get(`https://api.github.com/users/${username}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -16,7 +16,9 @@ function* getUser({ username }) {
 
     yield put(loadDataSuccess([dados.data]));
   } catch (error) {
+    
     yield put(loadDataFailure(error.response));
+   
   }
 }
 

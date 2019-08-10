@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
-// import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import FormGroup from '@material-ui/core/FormGroup';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,25 +9,9 @@ import { connect } from 'react-redux';
 import { changeSearchWord } from '../actions/userBaseActions';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { withRouter } from 'react-router-dom';
-// import { Nav } from './styles';
 import './style.css';
+import logo from '../images/GitHub_Logo.png'
 
-// const useStyles = makeStyles(theme => ({
-//   container: {
-//     display: 'flex',
-//     flexWrap: 'wrap'
-//   },
-//   textField: {
-//     marginLeft: theme.spacing(1),
-//     marginRight: theme.spacing(1)
-//   },
-//   dense: {
-//     marginTop: theme.spacing(2)
-//   },
-//   menu: {
-//     width: 200
-//   }
-// }));
 
 class NavBar extends Component {
   constructor(props) {
@@ -43,11 +26,7 @@ class NavBar extends Component {
     };
   }
 
-  componentDidMount() {}
-
-  handleValue = ({ target: { value, name } }) => {
-    this.setState({ [name]: value });
-  };
+  
 
   handleSubmit = e => {
     const { query, searchRepos } = this.state;
@@ -85,6 +64,7 @@ class NavBar extends Component {
     return (
       <>
         <div className={searchWord ? 'navbar-center nav-top' : 'navbar-center'}>
+          <div><img src={logo} width={'100' }></img></div>
           <div>
             {!searchWord && <span item>Users</span>}
             <Switch
@@ -145,4 +125,3 @@ export default connect(
   { changeSearchWord }
 )(withRouter(NavBar));
 
-// export default ;

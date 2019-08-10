@@ -7,7 +7,6 @@ import { changeSearchWord } from '../actions/userBaseActions';
 import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { PageHeader } from './styles';
-// import NavBar2 from '../Nav/index2';
 
 class Paginacao extends Component {
   constructor(props) {
@@ -24,7 +23,6 @@ class Paginacao extends Component {
   }
 
   componentDidMount() {
-    // this.props.loadDataRequestRepos(this.query, 1);
     axios
       .get(`https://api.github.com/search/repositories?q=${this.query}`)
       .then(res => this.setState({ total_count: res.data.total_count }));
@@ -47,7 +45,6 @@ class Paginacao extends Component {
     const { query } = this.props.match.params;
     return (
       <>
-        {/* <NavBar2 /> */}
         <PageHeader className='container'>
           <div style={{ marginLeft: '50px', marginTop: '80px' }}>
             <Alert variant={'secondary'}>

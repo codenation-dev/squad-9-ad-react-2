@@ -22,9 +22,6 @@ class User extends Component {
       username: ''
     };
   }
-  // componentWillMount() {
-
-  // }
 
   componentDidMount() {
     const user = this.props.match.params.query;
@@ -34,7 +31,9 @@ class User extends Component {
 
   componentWillReceiveProps(nextProps) {
     const username = nextProps.match.params.query;
-    if (this.props.match.params.query !== username)
+    const query = this.props.match.params.query
+    
+    if (query.toLowerCase() !== username.toLowerCase())
       this.props.loadDataRequest(username);
   }
 
@@ -48,7 +47,7 @@ class User extends Component {
 
     const { userBase, addUser } = this.props;
 
-    const user = userBase.find(user => user.login === query);
+    const user = userBase.find(user => user.login.toLowerCase() === query.toLowerCase());
 
     if (!user) {
       const { login, avatar_url } = [...userData][0];

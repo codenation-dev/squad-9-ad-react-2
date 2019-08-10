@@ -98,4 +98,4 @@ export default connect(
   mapStateToProps,
   { removeUsers, changeSearchWord }
 )(withRouter(Sidebar));
-// export default withRouter(Sidebar);
+
