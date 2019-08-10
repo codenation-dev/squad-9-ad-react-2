@@ -7,8 +7,10 @@ import getUserRepos from './userRepos/reducer';
 import repo from './repo/reducer';
 import userSearch from './userSearch/reducer';
 import userBase from './userBase/reducer';
+import searchWord from './searchWord/reducer';
 
 const rootReducers = combineReducers({
+  searchWord,
   userSearch,
   getUserRepos,
   repo,

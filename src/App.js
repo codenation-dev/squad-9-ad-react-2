@@ -13,7 +13,8 @@ function App() {
     <Provider store={store}>
       <>
         <Sidebar />
-        <Route exact path='/' component={NavBar} />
+        <NavBar />
+        <Route exact path='/' component={Home} />
         <div className='container'>
           <Route path='/:query' exact component={User} />
         </div>

@@ -3,7 +3,7 @@ import { SidebarStyle, LegendaSidebar } from './styles';
 import Icon from '@material-ui/core/Icon';
 import { withRouter } from 'react-router-dom';
 import UserItem from './UserBase/UserItem';
-import { removeUsers } from '../actions/userBaseActions';
+import { removeUsers, changeSearchWord } from '../actions/userBaseActions';
 
 import { connect } from 'react-redux';
 import UserList from './UserBase/UserList';
@@ -23,6 +23,7 @@ class Sidebar extends Component {
 
   goToMainPage = () => {
     this.props.history.push('/');
+    this.props.changeSearchWord('');
   };
 
   handleDeleteUser = e => {
@@ -35,6 +36,7 @@ class Sidebar extends Component {
       <SidebarStyle width={this.state.status}>
         <div>
           <span
+            onClick={this.handleSidebar}
             style={{
               display: 'flex',
               verticalAlign: 'center',
@@ -42,7 +44,7 @@ class Sidebar extends Component {
               marginTop: '220px'
             }}
           >
-            <Icon onClick={this.handleSidebar}>settings</Icon>
+            <Icon>settings</Icon>
             <span>
               <small style={{ marginLeft: '5px', fontSize: '10px' }}>
                 {this.state.status ? 'MENU' : ''}
@@ -95,6 +97,6 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { removeUsers }
+  { removeUsers, changeSearchWord }
 )(withRouter(Sidebar));
 // export default withRouter(Sidebar);

@@ -79,7 +79,7 @@ class User extends Component {
     return (
       <>
         {userData && userData.length > 0 && userBase && this.handleUserBase()}
-        <NavBar2 />
+        {/* <NavBar2 /> */}
         {userData.map(user => {
           return (
             <CardPrincipal s>

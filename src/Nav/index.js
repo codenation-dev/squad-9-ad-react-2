@@ -7,9 +7,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import FormGroup from '@material-ui/core/FormGroup';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import { changeSearchWord } from '../actions/userBaseActions';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { withRouter } from 'react-router-dom';
 import { Nav } from './styles';
+import './style.css';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -33,6 +36,7 @@ class NavBar extends Component {
     super(props);
     this.state = {
       query: '',
+      searchWord: props.searchWord,
       searchRepos: false,
       status: true
     };
@@ -50,11 +54,13 @@ class NavBar extends Component {
 
     if (searchRepos) push(`/repositories/${query}`);
     else push(query);
+    this.props.changeSearchWord(query);
 
-    this.setState({
-      query: '',
-      status: false
-    });
+    // this.setState({
+    //   query: '',
+    //   searchWord: query
+    //   // status: false
+    // });
   };
 
   handleSwitch = () => {
@@ -65,44 +71,33 @@ class NavBar extends Component {
 
   render() {
     const { searchRepos, query } = this.state;
-    const { windowWidth } = this.props;
+    const { windowWidth, searchWord } = this.props;
 
     return (
       <>
         {this.state.status && (
           <div
-            style={{
-              textAlign: 'center',
-              width: windowWidth < 500 ? 'inherit' : '50%',
-              // marginTop: windowWidth < 500 ? '30%' : '15%',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              animation: 'fadeIn ease-in-out 1.5s'
-            }}
+            className={searchWord ? 'navbar-center nav-top' : 'navbar-center'}
+            // style={{
+            //   textAlign: 'center',
+            //   width: windowWidth < 500 ? 'inherit' : '50%',
+            //   // marginTop: windowWidth < 500 ? '30%' : '15%',
+            //   marginLeft: 'auto',
+            //   marginRight: 'auto',
+            //   animation: 'fadeIn ease-in-out 1.5s'
+            // }}
           >
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div>
-              <img
-                src={logo}
-                width={windowWidth > 500 ? '350px' : '280px'}
-                alt='github-logo'
-              />
-            </div>
             {/*<Repositorio/>*/}
-
-            <span item>Users</span>
-            <Switch
-              checked={searchRepos}
-              onChange={this.handleSwitch}
-              value={searchRepos ? 'repositories' : 'username'}
-              inputProps={{ 'aria-label': 'secondary checkbox' }}
-            />
-            <span item>Repositories</span>
+            <div>
+              {!searchWord && <span item>Users</span>}
+              <Switch
+                checked={searchRepos}
+                onChange={this.handleSwitch}
+                value={searchRepos ? 'repositories' : 'username'}
+                inputProps={{ 'aria-label': 'secondary checkbox' }}
+              />
+              {!searchWord && <span item>Repositories</span>}
+            </div>
             <form onSubmit={e => this.handleSubmit(e)}>
               <Grid item xs={12}>
                 <FormGroup row={true}>
@@ -143,4 +138,15 @@ class NavBar extends Component {
   };
 }
 
-export default withRouter(NavBar);
+const mapStateToProps = state => {
+  return {
+    searchWord: state.searchWord
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { changeSearchWord }
+)(withRouter(NavBar));
+
+// export default ;

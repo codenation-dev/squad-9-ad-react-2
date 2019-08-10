@@ -3,14 +3,15 @@ import styled from 'styled-components';
 const SidebarStyle = styled.div`
   position: fixed;
   top: 0;
-  width: ${props => (props.width ? "100px" : "55px")};
+  width: ${props => (props.width ? '100px' : '55px')};
   transition: width 1s;
   height: 100%;
   background: #303f52;
-  
-  div{
-      margin-left: 8px;
-      padding: 5px;
+  z-index: 222;
+
+  div {
+    margin-left: 8px;
+    padding: 5px;
   }
 
   span {
@@ -23,15 +24,12 @@ const SidebarStyle = styled.div`
       cursor: pointer;
     }
   }
-  
+
   small {
- 
     :hover {
-     font-weight: 700;
+      font-weight: 700;
     }
-     
   }
-  
 
   @keyframes slide-top {
     0% {

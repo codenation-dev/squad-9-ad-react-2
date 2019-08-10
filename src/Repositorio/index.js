@@ -6,7 +6,7 @@ import { loadDataRequestRepos } from '../actions/repoActions';
 import { connect } from 'react-redux';
 import { Alert, Container, Jumbotron } from 'react-bootstrap';
 import { PageHeader } from './styles';
-import NavBar2 from '../Nav/index2';
+// import NavBar2 from '../Nav/index2';
 
 class Paginacao extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Paginacao extends Component {
     const { total_count, pagina_atual } = this.state;
     return (
       <>
-        <NavBar2 />
+        {/* <NavBar2 /> */}
         <PageHeader className='container'>
           <div style={{ marginLeft: '50px', marginTop: '80px' }}>
             <Alert variant={'secondary'}>

@@ -10,3 +10,10 @@ export const removeUsers = () => {
     type: 'REMOVE_USER'
   };
 };
+
+export const changeSearchWord = string => {
+  return {
+    type: 'CHANGE_SEARCH_WORD',
+    payload: string
+  };
+};
