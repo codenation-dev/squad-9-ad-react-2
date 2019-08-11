@@ -1,0 +1,62 @@
+.navbar-center {
+  text-align: center;
+  width: 50%;
+  flex: 1;
+
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn ease-in-out 1.5s;
+  position: absolute;
+
+
+  width: 100%;
+  transition: 1.0s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 40%;
+}
+
+div.nav-top * {
+  color: white !important;
+  border-color: #85859a !important;
+}
+
+
+
+div.nav-top .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: white !important;
+}
+
+.navbar-center form {
+  width: 50%;
+  margin: auto;
+
+  display: block;
+}
+
+.nav-top {
+  top: 0;
+  flex-direction: row;
+  background-color: #303f52;
+  justify-content: space-around;
+}
+
+.nav-top form {
+  width: auto;
+  padding: 0 20px;
+  display: inline-flex;
+}
+
+.MuiSwitch-colorSecondary.Mui-checked+.MuiSwitch-track {
+  background-color: #ff5b96 !important;
+}
+
+
+.MuiSwitch-track {
+
+  opacity: 100 !important;
+
+  background-color: #a6a6a6 !important;
+}

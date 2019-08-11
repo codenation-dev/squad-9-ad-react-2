@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadDataRequestRepos } from '../actions/repoActions';
-import Button from '@material-ui/core/Button';
-import Pagination from '../Paginacao';
-import {
-  Card,
-  Col,
-  Container,
-  FormControl,
-  InputGroup,
-  Image,
-  Spinner,
-  Jumbotron
-} from 'react-bootstrap';
+import { Card, Image, Spinner } from 'react-bootstrap';
 
 class RepoData extends Component {
   constructor(props) {
@@ -28,16 +17,9 @@ class RepoData extends Component {
       this.props.loadDataRequestRepos(this.props.query, this.props.pagina);
   }
 
-  //html_url
-  //id
-  //language
-  //score
-  //description
-  //owner.login
-
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center', marginLeft: '60px' }}>
         {this.props.repo ? (
           <div
             className='row'

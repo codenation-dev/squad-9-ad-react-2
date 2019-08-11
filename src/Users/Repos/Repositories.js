@@ -21,8 +21,8 @@ function TabPanel(props) {
 
   return (
     <Typography
-      component="div"
-      role="tabpanel"
+      component='div'
+      role='tabpanel'
       hidden={value !== index}
       id={`scrollable-auto-tabpanel-${index}`}
       aria-labelledby={`scrollable-auto-tab-${index}`}
@@ -36,13 +36,13 @@ function TabPanel(props) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired
 };
 
 function a11yProps(index) {
   return {
     id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`
   };
 }
 
@@ -50,77 +50,72 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  },
+    backgroundColor: theme.palette.background.paper
+  }
 }));
 
 export default function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const [repos, setRepos] = React.useState([]);
+  const [value, setValue] = React.useState(null);
 
   function handleChange(event, newValue) {
     setValue(newValue);
   }
 
-  console.log(props.years)
-
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position='static' color='default'>
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
+          indicatorColor='primary'
+          textColor='primary'
+          variant='scrollable'
+          scrollButtons='auto'
+          aria-label='scrollable auto tabs example'
         >
-          {
-            props.years.map((year , index) => {
-              return <Tab label={year} {...a11yProps(index)} onClick={() => {
-                props.forceUpdate(year)
-              }}/>
-            })
-          }
+          {props.years.map((year, index) => {
+            return (
+              <Tab
+                label={year}
+                {...a11yProps(index)}
+                onClick={() => {
+                  props.forceUpdate(year);
+                }}
+              />
+            );
+          })}
         </Tabs>
       </AppBar>
-          {
-            props.years.map((year, index) => {
-              return (
-              <TabPanel value={value} index={index}>
-                <Paper>
-                  <Table>
-                    <TableBody>
-                      {
-                        props.repos.map(repo => {
-                          return (
-                            <TableRow>
-                              <TableCell>
-                                <ListItem
-                                  button
-                                  component="a"
-                                  href={repo.html_url}
-                                  target="_blank"
-                                >
-                                  <ListItemText primary={repo.name} />
-                                </ListItem>
-                              </TableCell>
-                            </TableRow>
-                          )
-                        })
-                      }
-                    </TableBody>
-                  </Table>
-                </Paper>
-                <List>
-                  
-                </List>
-              </TabPanel>
-              )
-            })
-          }
+      {props.years.map((year, index) => {
+        return (
+          <TabPanel value={value} index={index}>
+            <Paper>
+              <Table>
+                <TableBody>
+                  {props.repos.map(repo => {
+                    return (
+                      <TableRow>
+                        <TableCell>
+                          <ListItem
+                            button
+                            component='a'
+                            href={repo.html_url}
+                            target='_blank'
+                          >
+                            <ListItemText primary={repo.name} />
+                          </ListItem>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </Paper>
+            <List />
+          </TabPanel>
+        );
+      })}
     </div>
   );
 }

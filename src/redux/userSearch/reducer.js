@@ -1,5 +1,8 @@
+const userBase = localStorage.getItem('userBase');
+
 const INITIAL_STATE = {
   data: [],
+  userBase: userBase ? JSON.parse(userBase) : null,
   isFetching: false,
   error: false
 };
@@ -25,6 +28,12 @@ const userSearch = (state = INITIAL_STATE, action) => {
       data: [],
       error: true,
       status: action.data.status
+    };
+  }
+  if (action.type === 'REMOVE_USER') {
+    return {
+      ...state,
+      data: []
     };
   }
   return state;

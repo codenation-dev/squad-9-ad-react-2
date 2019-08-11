@@ -41,28 +41,3 @@ export const loadUserReposFailure = data => {
     data
   };
 };
-
-/*
-
-export const loadDataRequestRepos = (language, query) => {
-  return {
-    type: "LOAD_DATA_REQUEST_REPOS",
-    language,
-    query
-  };
-};
-
-export const loadDataSuccessRepos = data => {
-  return {
-    type: "LOAD_DATA_SUCCESS_REPOS",
-    data
-  };
-};
-
-export const loadUserReposFailure = data => {
-  return {
-    type: "LOAD_DATA_FAILURE_REPOS",
-    data
-  };
-};
-*/

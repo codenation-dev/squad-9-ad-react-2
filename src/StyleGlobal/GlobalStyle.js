@@ -16,8 +16,29 @@ export default createGlobalStyle`
   }
    
   html, body, #root{
-    height: 100%
+    height: 100%;
+    overflow: hidden;
   }
+
+  .page-link {
+    color: #a1a1a2 !important
+  }
+
+  .page-link:focus {
+    box-shadow: none !important; 
+  }
+
+
+  .page-item.active .page-link {
+    background-color: #303f52 !important;
+    border-color: #303f52 !important;
+    color: #fff !important; 
+  }
+
+  #doc-body {
+    transition: margin 1s;
+  }
+
 
   @keyframes fadeIn {
     0% {

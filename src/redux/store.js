@@ -1,14 +1,19 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
-//Import rootSagas and createMiddleware function
 import rootSagas from './rootSagas';
 import createSagaMiddleware from 'redux-saga';
 import getUserRepos from './userRepos/reducer';
-// Import reducers
-// import User from './user/reducer';
 import repo from './repo/reducer';
 import userSearch from './userSearch/reducer';
+import userBase from './userBase/reducer';
+import searchWord from './searchWord/reducer';
 
-const rootReducers = combineReducers({ userSearch, getUserRepos, repo });
+const rootReducers = combineReducers({
+  searchWord,
+  userSearch,
+  getUserRepos,
+  repo,
+  userBase
+});
 
 const sagaMiddleware = createSagaMiddleware();
 

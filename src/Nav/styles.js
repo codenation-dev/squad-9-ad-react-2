@@ -2,9 +2,13 @@ import styled from 'styled-components';
 
 const Nav = styled.div`
   display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+
   height: 10vh;
-  background: #097b65;
+  background: #303f52;
   justify-content: center;
 
   @keyframes slide-top1 {
@@ -17,10 +21,6 @@ const Nav = styled.div`
   }
 
   animation: slide-top1 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-
-  div {
-    background: white;
-  }
 `;
 
 const NavPesquisa2 = styled.div`

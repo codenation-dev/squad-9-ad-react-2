@@ -2,74 +2,19 @@
 
 Tiago Almeida, Janio Miara, José Mário, Jairo and Vagnerlandio Nunes
 
-# 
+#
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A aplicação consiste em uma página inicial onde o usuário ira se deparar com dois inputs.
 
-## Available Scripts
+O primeiro input, do tipo toggle, alterna a pesquisa entre usuários e repositorios. O valor padrão desse input é pesquisar por nome de usuário, caso o usuário enviar a procura, será renderizada uma página com informações sobre o usuário cadastrado.
+Ao clicar, o usuário estará alterando o valor desse input para pesquisa de repositórios no GitHub, onde uma página diferente será exibida caso o usuário confirme o envio da pesquisa.
 
-In the project directory, you can run:
+O segundo input, do tipo text, é uma caixa de texto na qual o usuário poderá pesquisar por um username do GitHub, ou pelo nome de uma linguagem (dependendo do valor atual do primeiro input).
 
-### `npm start`
+Quando a pesquisa for feita por nome de usuário, caso ele exista, será exibida uma página com o seu avatar, nome, login, quantidade de reposítorios publicos, seguidores, quantidade de pessoas que o usuário segue. Também será exibida uma lista com seus repositórios organizada por ano. Todas essas informações são puxadas da API do GitHub.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Quando a pesquisa for feita por nome de linguagem, será exibida uma página mostrando cards com os repositórios encontrados que utilizaram a linguagem pesquisada. O usuário poderá usar paginação para navegar entre esses repositórios.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+A aplicação também conta com uma barra de navegação lateral, possuindo 3 botões. O primeiro irá expandir a barra de navegação, o segundo trará o usuário para a home page, caso ele esteja em outra página. O terceiro botão limpa a lista de usuários que foram cadastrados no localStorage logo após as pesquisas. A barra também conta com miniaturas dos avatares dos usuários que fazem parte desse localStorage, que quando clicadas, trarão as informações do usuário diretamente, sem que seja preciso pesquisar novamente pelo nome.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
+,

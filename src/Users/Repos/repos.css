@@ -5,3 +5,11 @@
 .MuiTableCell-root:last-child {
   padding-right: 0 !important;
 }
+
+.MuiButtonBase-root:focus {
+  outline: 0
+}
+
+.MuiBox-root {
+  background-color: #00000021;
+}

@@ -8,28 +8,72 @@ import {
   UserAvatar,
   StatusMessage,
   CardUserInfoHeader,
-  CardUserInfoContent
+  CardUserInfoContent,
+  CardUserLogin
 } from './styles';
 import UserRepos from './Repos';
-import UserSearchBar from '../Nav/UserSearchBar';
+import { addUser, changeSearchWord } from '../actions/userBaseActions';
 import { Spinner } from 'react-bootstrap';
 
 class User extends Component {
-  componentDidMount() {
-    const user = this.props.match.params.nameUser;
-    this.props.loadDataRequest(user);
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: ''
+    };
   }
 
-  handleRequest = user => {
+  componentDidMount() {
+    const user = this.props.match.params.query;
     this.props.loadDataRequest(user);
+    this.props.changeSearchWord(user);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const username = nextProps.match.params.query;
+    const query = this.props.match.params.query;
+
+    if (query.toLowerCase() !== username.toLowerCase())
+      this.props.loadDataRequest(username);
+  }
+
+  handleUserBase = () => {
+    let {
+      userData,
+      match: {
+        params: { query }
+      }
+    } = this.props;
+
+    const { userBase, addUser } = this.props;
+
+    const user = userBase.find(
+      user => user.login.toLowerCase() === query.toLowerCase()
+    );
+
+    if (!user) {
+      const { login, avatar_url } = [...userData][0];
+
+      localStorage.setItem(
+        'userBase',
+        JSON.stringify([...userBase, { login, avatar_url }])
+      );
+      addUser({ login, avatar_url });
+    }
   };
 
   render() {
-    const { user, error, isFetching, status } = this.props;
+    const { userData, error, isFetching, status, userBase } = this.props;
 
     if (isFetching)
       return (
-        <div style={{ marginTop: '15%', textAlign: 'center' }}>
+        <div
+          style={{
+            marginTop: '15%',
+            textAlign: 'center',
+            animation: '1.5s fadeIn ease-in-out 1.5s'
+          }}
+        >
           <Spinner animation='grow' />
           <Spinner animation='grow' />
           <Spinner animation='grow' />
@@ -44,19 +88,15 @@ class User extends Component {
 
     return (
       <>
-        <div className='text-center'>
-          <UserSearchBar handleRequest={this.handleRequest} />
-        </div>
-
-        {user.map(user => {
+        {userData && userData.length > 0 && userBase && this.handleUserBase()}
+        {userData.map(user => {
           return (
             <CardPrincipal>
               <div style={{ display: 'flex', marginTop: '8rem' }}>
-                {/*<Logo className="logo" src={logoGithub} alt="Logo" />*/}
                 <UserAvatar src={user.avatar_url} />
                 <CardUserInfo>
                   <CardUserInfoHeader>
-                    <h3>
+                    <h2>
                       <a
                         href={user.html_url}
                         target='_blank'
@@ -64,8 +104,8 @@ class User extends Component {
                       >
                         {user.name}
                       </a>
-                    </h3>
-                    <span style={{ fontSize: '0.75em' }}>{user.login}</span>
+                    </h2>
+                    <CardUserLogin>{user.login}</CardUserLogin>
                   </CardUserInfoHeader>
                   <CardUserInfoContent>
                     <div>Repositórios públicos: {user.public_repos}</div>
@@ -83,17 +123,19 @@ class User extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { data, error, isFetching, status } = state.userSearch;
+  const { userBase } = state;
   return {
-    user: data,
+    userBase,
+    userData: data || null,
     error,
     isFetching,
     status
   };
-}
+};
 
 export default connect(
   mapStateToProps,
-  { loadDataRequest }
+  { loadDataRequest, addUser, changeSearchWord }
 )(withRouter(User));

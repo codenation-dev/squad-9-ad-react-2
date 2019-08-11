@@ -25,7 +25,7 @@ class UserRepos extends Component {
       return Number(repo.created_at.substr(0, 4));
     });
 
-    return [...new Set(anos)];
+    return [...new Set(anos)].sort();
   };
 
   handleRepo = year => {
