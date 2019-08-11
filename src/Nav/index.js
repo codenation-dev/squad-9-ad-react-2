@@ -15,7 +15,6 @@ import logo from '../images/GitHub_Logo.png';
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    console.log(props.location.pathname);
     this.state = {
       query: '',
       searchWord: props.searchWord,
@@ -62,7 +61,7 @@ class NavBar extends Component {
       <div className={searchWord ? 'navbar-center nav-top' : 'navbar-center'}>
         {searchWord && (
           <div>
-            <img src={logo} width={'150'} alt='github-project-logo' />
+            <img src={logo} width={'180'} alt='github-project-logo' />
           </div>
         )}
         <div className={searchWord ? '' : 'container'}>

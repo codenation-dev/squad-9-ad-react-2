@@ -31,8 +31,8 @@ class User extends Component {
 
   componentWillReceiveProps(nextProps) {
     const username = nextProps.match.params.query;
-    const query = this.props.match.params.query
-    
+    const query = this.props.match.params.query;
+
     if (query.toLowerCase() !== username.toLowerCase())
       this.props.loadDataRequest(username);
   }
@@ -47,7 +47,9 @@ class User extends Component {
 
     const { userBase, addUser } = this.props;
 
-    const user = userBase.find(user => user.login.toLowerCase() === query.toLowerCase());
+    const user = userBase.find(
+      user => user.login.toLowerCase() === query.toLowerCase()
+    );
 
     if (!user) {
       const { login, avatar_url } = [...userData][0];
@@ -69,7 +71,7 @@ class User extends Component {
           style={{
             marginTop: '15%',
             textAlign: 'center',
-            animation: '1.5 fadeIn ease-in-out 1.5s'
+            animation: '1.5s fadeIn ease-in-out 1.5s'
           }}
         >
           <Spinner animation='grow' />
@@ -87,7 +89,6 @@ class User extends Component {
     return (
       <>
         {userData && userData.length > 0 && userBase && this.handleUserBase()}
-        {/* <NavBar2 /> */}
         {userData.map(user => {
           return (
             <CardPrincipal>

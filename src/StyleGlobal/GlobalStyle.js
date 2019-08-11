@@ -27,10 +27,13 @@ export default createGlobalStyle`
     box-shadow: none !important; 
   }
 
+
   .page-item.active .page-link {
     background-color: #303f52 !important;
     border-color: #303f52 !important;
+    color: #fff !important; 
   }
+
 
   @keyframes fadeIn {
     0% {

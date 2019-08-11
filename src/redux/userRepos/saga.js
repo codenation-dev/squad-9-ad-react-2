@@ -6,8 +6,8 @@ import { loadUserReposFailure, loadUserReposSuccess } from '../../actions';
 
 function* getUserRepos({ payload }) {
   try {
-    console.log(payload, 'payload');
     const dados = yield axios.get(payload);
+
     yield put(loadUserReposSuccess(dados.data));
   } catch (error) {
     yield put(loadUserReposFailure(error.response));

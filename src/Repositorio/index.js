@@ -30,7 +30,6 @@ class Paginacao extends Component {
 
   componentWillReceiveProps(nextProps) {
     const username = nextProps.match.params.query;
-    console.log(nextProps, 'joww');
     if (this.props.match.params.query !== username)
       this.props.loadDataRequestRepos(username);
   }
@@ -73,7 +72,6 @@ class Paginacao extends Component {
 
 const mapStateToProps = state => {
   const { total_count } = state.repo;
-  // const { searchWord } = state;
 
   return {
     total_count
