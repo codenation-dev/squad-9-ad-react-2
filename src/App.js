@@ -13,12 +13,15 @@ function App() {
     <Provider store={store}>
       <>
         <Sidebar />
-        <NavBar />
-        <Route exact path='/' component={Home} />
-        <div className='container'>
-          <Route path='/:query' exact component={User} />
+        <div id='doc-body'>
+          <NavBar />
+
+          <Route exact path='/' component={Home} />
+          <div className='container'>
+            <Route path='/:query' exact component={User} />
+          </div>
+          <Route path='/repositories/:query' exact component={Paginacao} />
         </div>
-        <Route path='/repositories/:query' exact component={Paginacao} />
       </>
     </Provider>
   );

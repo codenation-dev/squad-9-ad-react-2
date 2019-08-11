@@ -16,7 +16,8 @@ export default createGlobalStyle`
   }
    
   html, body, #root{
-    height: 100%
+    height: 100%;
+    overflow: hidden;
   }
 
   .page-link {
@@ -32,6 +33,10 @@ export default createGlobalStyle`
     background-color: #303f52 !important;
     border-color: #303f52 !important;
     color: #fff !important; 
+  }
+
+  #doc-body {
+    transition: margin 1s;
   }
 
 

@@ -16,6 +16,14 @@ class Sidebar extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.status !== this.state.status) {
+      const docBody = document.querySelector('#doc-body');
+      if (this.state.status) docBody.style.marginLeft = '55px';
+      else docBody.style.marginLeft = '0';
+    }
+  }
+
   handleSidebar = () => {
     this.setState({ status: !this.state.status });
   };
@@ -33,7 +41,7 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <SidebarStyle width={this.state.status}>
+      <SidebarStyle width={this.state.status} id='sidebar'>
         <div>
           <span
             onClick={this.handleSidebar}
@@ -98,4 +106,3 @@ export default connect(
   mapStateToProps,
   { removeUsers, changeSearchWord }
 )(withRouter(Sidebar));
-
