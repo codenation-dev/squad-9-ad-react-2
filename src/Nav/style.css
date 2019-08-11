@@ -1,6 +1,7 @@
 .navbar-center {
   text-align: center;
   width: 50%;
+  flex: 1;
 
   margin-left: auto;
   margin-right: auto;
@@ -30,18 +31,32 @@ div.nav-top .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline 
 
 .navbar-center form {
   width: 50%;
-  margin: 0;
-  padding: 0 20px;
+  margin: auto;
+
+  display: block;
 }
 
 .nav-top {
   top: 0;
   flex-direction: row;
   background-color: #303f52;
+  justify-content: space-around;
 }
 
 .nav-top form {
   width: auto;
   padding: 0 20px;
+  display: inline-flex;
 }
 
+.MuiSwitch-colorSecondary.Mui-checked+.MuiSwitch-track {
+  background-color: #ff5b96 !important;
+}
+
+
+.MuiSwitch-track {
+
+  opacity: 100 !important;
+
+  background-color: #a6a6a6 !important;
+}

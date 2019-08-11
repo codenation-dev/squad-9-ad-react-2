@@ -10,8 +10,7 @@ import { changeSearchWord } from '../actions/userBaseActions';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { withRouter } from 'react-router-dom';
 import './style.css';
-import logo from '../images/GitHub_Logo.png'
-
+import logo from '../images/GitHub_Logo.png';
 
 class NavBar extends Component {
   constructor(props) {
@@ -25,8 +24,6 @@ class NavBar extends Component {
         : false
     };
   }
-
-  
 
   handleSubmit = e => {
     const { query, searchRepos } = this.state;
@@ -62,19 +59,22 @@ class NavBar extends Component {
     const { searchWord } = this.props;
 
     return (
-      <>
-        <div className={searchWord ? 'navbar-center nav-top' : 'navbar-center'}>
-          <div><img src={logo} width={'100' }></img></div>
+      <div className={searchWord ? 'navbar-center nav-top' : 'navbar-center'}>
+        {searchWord && (
           <div>
-            {!searchWord && <span item>Users</span>}
-            <Switch
-              checked={searchRepos}
-              onChange={this.handleSwitch}
-              value={searchRepos ? 'repositories' : 'username'}
-              inputProps={{ 'aria-label': 'secondary checkbox' }}
-            />
-            {!searchWord && <span item>Repositories</span>}
+            <img src={logo} width={'150'} alt='github-project-logo' />
           </div>
+        )}
+        <div className={searchWord ? '' : 'container'}>
+          {!searchWord && <span item>Users</span>}
+          <Switch
+            checked={searchRepos}
+            onChange={this.handleSwitch}
+            value={searchRepos ? 'repositories' : 'username'}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
+          {!searchWord && <span item>Repositories</span>}
+
           <form onSubmit={e => this.handleSubmit(e)}>
             <Grid item xs={12}>
               <FormGroup row={true}>
@@ -105,7 +105,8 @@ class NavBar extends Component {
             </Grid>
           </form>
         </div>
-      </>
+        <div />
+      </div>
     );
   }
 
@@ -124,4 +125,3 @@ export default connect(
   mapStateToProps,
   { changeSearchWord }
 )(withRouter(NavBar));
-
