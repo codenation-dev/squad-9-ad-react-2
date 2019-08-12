@@ -41,6 +41,7 @@ div.nav-top .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline 
   flex-direction: row;
   background-color: #303f52;
   justify-content: space-around;
+  z-index: 2;
 }
 
 .nav-top form {
