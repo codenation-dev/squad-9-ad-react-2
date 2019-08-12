@@ -53,7 +53,7 @@ class Sidebar extends Component {
           >
             <Icon>settings</Icon>
             <span>
-              <small style={{ marginLeft: '5px', fontSize: '10px' }}>
+              <small style={{ marginLeft: '5px', fontSize: '13px' }}>
                 {this.state.status ? 'MENU' : ''}
               </small>
             </span>
