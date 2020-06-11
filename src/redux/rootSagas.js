@@ -5,5 +5,11 @@ import { userSearchSagas } from './userSearch/saga';
 import { userReposSagas } from './userRepos/saga';
 
 export default function* rootSagas() {
-  yield all([call(userSearchSagas), call(userReposSagas), call(repoSagas)]);
+  yield all(
+    [
+      call(userSearchSagas), 
+      call(userReposSagas), 
+      call(repoSagas)
+    ]
+  );
 }

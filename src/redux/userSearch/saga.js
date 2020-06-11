@@ -6,12 +6,12 @@ import { loadDataFailure, loadDataSuccess } from '../../actions';
 
 function* getUser({ username }) {
   try {
-    const dados = yield axios.get(`https://api.github.com/users/${username}`, {
+    const dados = yield axios.get(`https://api.github.com/users/${username}`/*, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'bearer ba958f09e0d9bbf8d3f9dc1daa59d87f91c48313'
       }
-    });
+    }*/);
     yield delay(700);
 
     yield put(loadDataSuccess([dados.data]));

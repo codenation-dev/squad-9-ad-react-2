@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const LEFT_PAGE = 'LEFT';
@@ -122,7 +122,7 @@ class Pagination extends Component {
     const pages = this.fetchPageNumbers();
 
     return (
-      <Fragment>
+      <>
         <div className='row justify-content-end'>
           <div
             className='col-12'
@@ -187,7 +187,7 @@ class Pagination extends Component {
             </nav>
           </div>
         </div>
-      </Fragment>
+      </>
     );
   }
 }

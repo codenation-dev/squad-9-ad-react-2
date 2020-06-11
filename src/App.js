@@ -11,7 +11,6 @@ import NavBar from './Nav';
 function App() {
   return (
     <Provider store={store}>
-      <>
         <Sidebar />
         <div id='doc-body'>
           <NavBar />
@@ -22,7 +21,7 @@ function App() {
           </div>
           <Route path='/repositories/:query' exact component={Paginacao} />
         </div>
-      </>
+
     </Provider>
   );
 }

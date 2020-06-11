@@ -18,20 +18,21 @@ class NavBar extends Component {
     this.state = {
       query: '',
       searchWord: props.searchWord,
-      searchRepos: props.location.pathname.startsWith('/repositories')
-        ? true
-        : false
+      searchRepos: props.location.pathname.startsWith('/repositories') ? true : false
     };
   }
 
   handleSubmit = e => {
+    e.preventDefault();
     const { query, searchRepos } = this.state;
     const { push } = this.props.history;
 
-    e.preventDefault();
-
-    if (searchRepos) push(`/repositories/${query}`);
-    else push(`/${query}`);
+    if (searchRepos) {
+      push(`/repositories/${query}`);
+    }
+    else {
+      push(`/${query}`);
+    }
     this.props.changeSearchWord(query);
   };
 
@@ -104,7 +105,7 @@ class NavBar extends Component {
             </Grid>
           </form>
         </div>
-        <div />
+        <div/>
       </div>
     );
   }
